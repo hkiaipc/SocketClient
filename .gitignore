@@ -1,5 +1,6 @@
 debug/
 bin/
+bin
 obj/
 *.exe
 *.dll
