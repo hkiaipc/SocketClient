@@ -72,10 +72,9 @@
             this.mnuEnableReply = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuReplySetting = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTransmit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEnableTransmit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEnableTransmit = new System.Windows.Forms.ToolStripMenuItem();
             this.grpConnectTo.SuspendLayout();
             this.grpReceived.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -421,7 +420,6 @@
             this.mnuFile,
             this.mnuSerialPort,
             this.mnuReply,
-            this.mnuTransmit,
             this.mnuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -450,6 +448,7 @@
             this.mnuSerialPort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuOpenSerialPort,
             this.mnuCloseSerialPort,
+            this.mnuEnableTransmit,
             this.toolStripSeparator1,
             this.mnuSerialPortSetting});
             this.mnuSerialPort.Name = "mnuSerialPort";
@@ -459,26 +458,26 @@
             // mnuOpenSerialPort
             // 
             this.mnuOpenSerialPort.Name = "mnuOpenSerialPort";
-            this.mnuOpenSerialPort.Size = new System.Drawing.Size(130, 22);
+            this.mnuOpenSerialPort.Size = new System.Drawing.Size(152, 22);
             this.mnuOpenSerialPort.Text = "打开(&O)";
             this.mnuOpenSerialPort.Click += new System.EventHandler(this.mnuOpenSerialPort_Click);
             // 
             // mnuCloseSerialPort
             // 
             this.mnuCloseSerialPort.Name = "mnuCloseSerialPort";
-            this.mnuCloseSerialPort.Size = new System.Drawing.Size(130, 22);
+            this.mnuCloseSerialPort.Size = new System.Drawing.Size(152, 22);
             this.mnuCloseSerialPort.Text = "关闭(&C)";
             this.mnuCloseSerialPort.Click += new System.EventHandler(this.mnuCloseSerialPort_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(127, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuSerialPortSetting
             // 
             this.mnuSerialPortSetting.Name = "mnuSerialPortSetting";
-            this.mnuSerialPortSetting.Size = new System.Drawing.Size(130, 22);
+            this.mnuSerialPortSetting.Size = new System.Drawing.Size(152, 22);
             this.mnuSerialPortSetting.Text = "设置(&S)...";
             this.mnuSerialPortSetting.Click += new System.EventHandler(this.mnuSerialPortSetting_Click);
             // 
@@ -495,36 +494,21 @@
             // mnuEnableReply
             // 
             this.mnuEnableReply.Name = "mnuEnableReply";
-            this.mnuEnableReply.Size = new System.Drawing.Size(136, 22);
+            this.mnuEnableReply.Size = new System.Drawing.Size(152, 22);
             this.mnuEnableReply.Text = "启用回复(&A)";
             this.mnuEnableReply.Click += new System.EventHandler(this.mnuEnableReply_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuReplySetting
             // 
             this.mnuReplySetting.Name = "mnuReplySetting";
-            this.mnuReplySetting.Size = new System.Drawing.Size(136, 22);
+            this.mnuReplySetting.Size = new System.Drawing.Size(152, 22);
             this.mnuReplySetting.Text = "设置(&S)...";
             this.mnuReplySetting.Click += new System.EventHandler(this.mnuReplySetting_Click);
-            // 
-            // mnuTransmit
-            // 
-            this.mnuTransmit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEnableTransmit});
-            this.mnuTransmit.Name = "mnuTransmit";
-            this.mnuTransmit.Size = new System.Drawing.Size(59, 20);
-            this.mnuTransmit.Text = "转发(&T)";
-            // 
-            // mnuEnableTransmit
-            // 
-            this.mnuEnableTransmit.Name = "mnuEnableTransmit";
-            this.mnuEnableTransmit.Size = new System.Drawing.Size(136, 22);
-            this.mnuEnableTransmit.Text = "启用转发(&E)";
-            this.mnuEnableTransmit.Click += new System.EventHandler(this.mnuEnableTransmit_Click);
             // 
             // mnuHelp
             // 
@@ -540,6 +524,13 @@
             this.mnuAbout.Size = new System.Drawing.Size(130, 22);
             this.mnuAbout.Text = "关于(&A)...";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
+            // 
+            // mnuEnableTransmit
+            // 
+            this.mnuEnableTransmit.Name = "mnuEnableTransmit";
+            this.mnuEnableTransmit.Size = new System.Drawing.Size(152, 22);
+            this.mnuEnableTransmit.Text = "转发(&E)";
+            this.mnuEnableTransmit.Click += new System.EventHandler(this.mnuEnableTransmit_Click);
             // 
             // frmMain
             // 
@@ -610,8 +601,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCloseSerialPort;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuSerialPortSetting;
-        private System.Windows.Forms.ToolStripMenuItem mnuTransmit;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnableTransmit;
         private System.Windows.Forms.ToolStripMenuItem mnuReply;
         private System.Windows.Forms.ToolStripMenuItem mnuEnableReply;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -622,6 +611,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLength;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDatas;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnableTransmit;
     }
 }
 

@@ -31,18 +31,3 @@ using System.Runtime.InteropServices;
 //
 [assembly: AssemblyVersion("1.1.0.0")]
 [assembly: AssemblyFileVersion("1.1.0.0")]
-
-
-// v1001
-//
-// Socket.EndReceive() throw socketexception: error: 10054 message: 远程主机强迫关闭了一个现有的连接。
-
-// v1002
-// hex send
-
-// v1003
-// autosend
-
-
-// v1004
-// connect receive
