@@ -212,14 +212,14 @@ namespace SocketClient
                 //
                 n = this._socket.EndReceive(ia);
             }
-            catch (ObjectDisposedException)
+            catch (ObjectDisposedException objectDisposedEx)
             {
-                Console.WriteLine("object disposed exception");
+                Console.WriteLine("object disposed exception: " + objectDisposedEx.Message);
                 return;
             }
-            catch (SocketException )
+            catch (SocketException socketEx)
             {
-                Console.WriteLine("socket exception");
+                Console.WriteLine("socket exception: " + socketEx.Message);
                 this.CloseHelper();
                 return;
             }
@@ -259,20 +259,20 @@ namespace SocketClient
         {
             //if( !_isClosed )
             //if (_socket != null)
-            if( _socket.Connected )
-            {
-                Console.WriteLine("CloseHelper");
+            //if( _socket.Connected )
+            //{
+            Console.WriteLine("CloseHelper");
 
-                _socket.Disconnect(false);
-                _socket.Shutdown(SocketShutdown.Both);
-                _socket.Close();
-                if (this.ClosedEvent != null)
-                {
-                    this.ClosedEvent(this, EventArgs.Empty);
-                }
-                //_socket = null;
-                //_isClosed = true;
+            _socket.Disconnect(false);
+            _socket.Shutdown(SocketShutdown.Both);
+            _socket.Close();
+            if (this.ClosedEvent != null)
+            {
+                this.ClosedEvent(this, EventArgs.Empty);
             }
+            //_socket = null;
+            //_isClosed = true;
+            //}
         }
         #endregion //CloseHelper
 
