@@ -1,0 +1,4 @@
+﻿1. add crc
+2. connect collect
+3. send bytes collect
+4. save send received log
