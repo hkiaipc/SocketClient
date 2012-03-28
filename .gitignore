@@ -1,7 +1,4 @@
-debug/
-bin/
-bin
-obj/
+*bin/
 *.exe
 *.dll
 *.suo
