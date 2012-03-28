@@ -4,4 +4,28 @@
 8.Src
 bin
 file1.txt
-add line
+add line		-> master add
+1.exe
+2.exe
+5.Res
+8.Src
+bin
+file1.txt
+1.exe
+2.exe
+5.Res
+8.Src
+bin
+file1.txt
+1.exe
+2.exe
+5.Res
+8.Src
+bin
+file1.txt
+1.exe
+2.exe
+5.Res
+8.Src
+bin
+file1.txt
