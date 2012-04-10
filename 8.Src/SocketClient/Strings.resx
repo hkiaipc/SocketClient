@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AreYouSureDelete" xml:space="preserve">
+    <value>确定删除吗?</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>关闭</value>
   </data>
@@ -168,8 +174,23 @@
   <data name="ReplyState" xml:space="preserve">
     <value>回复: {0}</value>
   </data>
+  <data name="SelectListViewItemFirst" xml:space="preserve">
+    <value>请先选中一条记录</value>
+  </data>
   <data name="SendCannotEmpty" xml:space="preserve">
     <value>发送内容不能为空</value>
+  </data>
+  <data name="SendDataCannotEmpty" xml:space="preserve">
+    <value>数据不能为空</value>
+  </data>
+  <data name="SendDataManage" xml:space="preserve">
+    <value>管理(&amp;M)...</value>
+  </data>
+  <data name="SendDataNameCannotEmpty" xml:space="preserve">
+    <value>名称不能为空</value>
+  </data>
+  <data name="SendDataSave" xml:space="preserve">
+    <value>保存(&amp;S)...</value>
   </data>
   <data name="Transmit" xml:space="preserve">
     <value>转发</value>

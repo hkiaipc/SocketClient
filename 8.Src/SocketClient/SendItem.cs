@@ -9,6 +9,27 @@ namespace SocketClient
     /// </summary>
     public class SendItem
     {
+        #region Name
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                if (_name == null)
+                {
+                    _name = string.Empty;
+                }
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        } private string _name;
+        #endregion //Name
+
         #region Bytes
         /// <summary>
         /// 
@@ -64,7 +85,7 @@ namespace SocketClient
     /// <summary>
     /// 
     /// </summary>
-    public class SendCollectionManager 
+    public class SendCollectionManager
     {
         public SendCollection SendCollection
         {
@@ -73,7 +94,7 @@ namespace SocketClient
                 if (_sendCollection == null)
                 {
                     _sendCollection = new SendCollection();
-                    
+
                 }
                 return _sendCollection;
             }

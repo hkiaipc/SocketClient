@@ -257,18 +257,22 @@ namespace SocketClient
             //
             CreateContextMenu();
         }
+        #endregion //InitControls
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void CreateContextMenu()
         {
             this.contextMenuStrip1.Items.Clear();
 
             ToolStripItem m = null;
 
-            //menuItem = this.contextMenuStrip1.Items.Add("Config");
-            //menuItem.Click += new EventHandler(SendConfig_Click);
-
-            m = this.contextMenuStrip1.Items.Add("Add");
+            m = this.contextMenuStrip1.Items.Add(Strings.SendDataSave);
             m.Click += new EventHandler(SendAdd_Click);
+
+            m = this.contextMenuStrip1.Items.Add(Strings.SendDataManage);
+            m.Click += new EventHandler(SendManage_Click);
 
             m = new ToolStripSeparator();
             this.contextMenuStrip1.Items.Add(m);
@@ -279,7 +283,20 @@ namespace SocketClient
                 this.AddSendItemToContextMenu(si, i+1);
             }
         }
-        #endregion //InitControls
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void SendManage_Click(object sender, EventArgs e)
+        {
+            frmSendDataManager f = new frmSendDataManager();
+            f.ShowDialog();
+
+            CreateContextMenu();
+        }
+
 
 
         void SendAdd_Click(object sender, EventArgs e)
@@ -288,9 +305,16 @@ namespace SocketClient
             if (this.GetSendBytes(out bs))
             {
                 SendItem item = new SendItem();
+
+                item.Name = HexStringConverter.Default.ConvertToObject(bs).ToString();
                 item.Bytes = bs;
-                this.SendCollection.Add(item);
-                CreateContextMenu();
+
+                frmSendData f = new frmSendData(item);
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    this.SendCollection.Add(item);
+                    CreateContextMenu();
+                }
             }
         }
 
@@ -300,12 +324,14 @@ namespace SocketClient
         /// <param name="item"></param>
         private void AddSendItemToContextMenu(SendItem item, int no)
         {
-            string s = (string)HexStringConverter.Default.ConvertToObject(item.Bytes);
-            if (s.Length > 20)
-            {
-                s = s.Substring(0, 20) + "...";
-            }
+            //string s = (string)HexStringConverter.Default.ConvertToObject(item.Bytes);
+            //if (s.Length > 20)
+            //{
+            //    s = s.Substring(0, 20) + "...";
+            //}
+            string s = item.Name;
             s = no.ToString("00") + ": " + s;
+
             ToolStripMenuItem menuitem = new ToolStripMenuItem(s);
             menuitem.Tag = item;
             menuitem.Click += new EventHandler(menuitem_Click);
@@ -1311,11 +1337,21 @@ namespace SocketClient
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuAbout_Click(object sender, EventArgs e)
         {
-            string text = "";
+            string text = string.Format(
+                "{0}\r\n{1}\r\n\r\n{2}",
+                Application.ProductName,
+                Application.ProductVersion,
+                "hkiaipc@163.com");
+
             MessageBox.Show(this, text, 
-                "cap", 
+                Strings.About, 
                 MessageBoxButtons.OK, 
                 MessageBoxIcon.Information);
         }

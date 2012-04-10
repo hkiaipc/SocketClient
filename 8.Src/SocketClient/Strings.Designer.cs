@@ -61,6 +61,24 @@ namespace SocketClient {
         }
         
         /// <summary>
+        ///   查找类似 关于 的本地化字符串。
+        /// </summary>
+        internal static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定删除吗? 的本地化字符串。
+        /// </summary>
+        internal static string AreYouSureDelete {
+            get {
+                return ResourceManager.GetString("AreYouSureDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 关闭 的本地化字符串。
         /// </summary>
         internal static string Close {
@@ -214,11 +232,56 @@ namespace SocketClient {
         }
         
         /// <summary>
+        ///   查找类似 请先选中一条记录 的本地化字符串。
+        /// </summary>
+        internal static string SelectListViewItemFirst {
+            get {
+                return ResourceManager.GetString("SelectListViewItemFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 发送内容不能为空 的本地化字符串。
         /// </summary>
         internal static string SendCannotEmpty {
             get {
                 return ResourceManager.GetString("SendCannotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 数据不能为空 的本地化字符串。
+        /// </summary>
+        internal static string SendDataCannotEmpty {
+            get {
+                return ResourceManager.GetString("SendDataCannotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 管理(&amp;M)... 的本地化字符串。
+        /// </summary>
+        internal static string SendDataManage {
+            get {
+                return ResourceManager.GetString("SendDataManage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 名称不能为空 的本地化字符串。
+        /// </summary>
+        internal static string SendDataNameCannotEmpty {
+            get {
+                return ResourceManager.GetString("SendDataNameCannotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存(&amp;S)... 的本地化字符串。
+        /// </summary>
+        internal static string SendDataSave {
+            get {
+                return ResourceManager.GetString("SendDataSave", resourceCulture);
             }
         }
         

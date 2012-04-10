@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("SocketClient")]
+[assembly: AssemblyTitle("Socket Debuger")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("微软中国")]
-[assembly: AssemblyProduct("SocketClient")]
-[assembly: AssemblyCopyright("版权所有 (C) 微软中国 2009")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Socket Debuger")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
