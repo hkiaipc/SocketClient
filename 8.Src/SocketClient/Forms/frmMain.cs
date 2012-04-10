@@ -1320,5 +1320,30 @@ namespace SocketClient
                 MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSend_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (rbSendHex.Checked)
+            {
+                char key= e.KeyChar;
+
+                if (char.IsDigit(key) ||
+                    (key >= 'a' && key <= 'f') ||
+                    (key >= 'A' && key <= 'F') ||
+                    key == ' ')
+                {
+
+                }
+                else
+                {
+                    e.KeyChar = (char)0;
+                }
+            }
+        }
+
     }
 }
