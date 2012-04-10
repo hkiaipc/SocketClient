@@ -414,6 +414,9 @@ namespace SocketClient
             this.tssReply.Text = s;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void RefreshSerialPortState()
         {
             this.mnuOpenSerialPort.Enabled = !this.SerialPortManager.IsOpen;
@@ -421,9 +424,8 @@ namespace SocketClient
             this.mnuSerialPortSetting.Enabled = !this.SerialPortManager.IsOpen;
 
             this.tssSerialPort.Text = string.Format(
-                "{0} {1} {2}",
-                this.SerialPortManager.PortName,
-                this.SerialPortManager.Setting,
+                "{0} {1}",
+                this.SerialPortManager.SerialPortSettings,
                 this.SerialPortManager.IsOpen ? Strings.Opened : Strings.Closed);
         }
 
@@ -975,7 +977,7 @@ namespace SocketClient
 
         private string GetSerialPortName()
         {
-            return App.Default.SerialPortManager.PortName;
+            return App.Default.SerialPortManager.SerialPortSettings.PortName;
         }
         private string GetMe()
         {
@@ -1163,6 +1165,8 @@ namespace SocketClient
         private void mnuSerialPortSetting_Click(object sender, EventArgs e)
         {
             frmSerialPort f = new frmSerialPort();
+            f.SerialPortSettings = this.SerialPortManager.SerialPortSettings;
+
             DialogResult dr = f.ShowDialog(this);
             if (dr == DialogResult.OK)
             {

@@ -50,6 +50,7 @@
     <Compile Include="DataMode.cs" />
     <Compile Include="Delegate.cs" />
     <Compile Include="SendItem.cs" />
+    <Compile Include="SerialPort\SerialPortSettings.cs" />
     <Compile Include="Transmitter.cs" />
     <Compile Include="Forms\frmSerialPort.cs">
       <SubType>Form</SubType>
@@ -115,8 +116,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ReplyManager.cs" />
-    <Compile Include="SerialPortTransmitAdpater.cs" />
-    <Compile Include="SerialPortManager.cs" />
+    <Compile Include="SerialPort\SerialPortTransmitAdpater.cs" />
+    <Compile Include="SerialPort\SerialPortManager.cs" />
     <Compile Include="SocketClient.cs" />
     <Compile Include="App.cs" />
     <Compile Include="SocketTransmitAdpater.cs" />

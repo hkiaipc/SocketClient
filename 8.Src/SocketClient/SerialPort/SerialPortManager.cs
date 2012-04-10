@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 using System.IO.Ports;
 
 namespace SocketClient
@@ -37,14 +36,14 @@ namespace SocketClient
         /// </summary>
         public SerialPort SerialPort
         {
-            get 
+            get
             {
                 if (_serialPort == null)
                 {
                     _serialPort = new SerialPort();
-                    _serialPort .DataReceived +=new SerialDataReceivedEventHandler(_serialPort_DataReceived);
+                    _serialPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
                 }
-                return _serialPort; 
+                return _serialPort;
             }
         } private SerialPort _serialPort;
 
@@ -100,38 +99,67 @@ namespace SocketClient
         {
             get { return this.SerialPort.IsOpen; }
         }
-        public string Setting
-        {
-            get 
-            {
-                string s = string.Format(
-                    "{0},{1},{2},{3}",
-                    this.BaudRate, this.Parity, this.DataBits, this.StopBits 
-                    );
-                return s;
-            }
-            set 
-            {
-                string[] ss = value.Split(',');
-                if (ss.Length == 4)
-                {
-                    int baudRate = int.Parse(ss[0]);
-                    Parity parity = (Parity)Enum.Parse(typeof(Parity), ss[1]);
-                    int dataBits = int.Parse(ss[2]);
-                    StopBits stopBits = (StopBits)Enum.Parse(typeof(StopBits), ss[3]);
 
-                    this.BaudRate = baudRate;
-                    this.Parity = parity;
-                    this.DataBits = dataBits;
-                    this.StopBits = stopBits;
-                    
-                }
-                else
-                {
-                    throw new ArgumentException("setting");
-                }
+        #region SerialPortSettings
+        /// <summary>
+        /// 
+        /// </summary>
+        public SerialPortSettings SerialPortSettings
+        {
+            get
+            {
+                return _serialPortSettings;
             }
-        }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("SerialPortSettings");
+                }
+
+                this.SerialPort.PortName = value.PortName;
+                this.SerialPort.BaudRate = value.BaudRate;
+                this.SerialPort.DataBits = value.DataBits;
+                this.SerialPort.Parity = value.Parity;
+                this.SerialPort.StopBits = value.StopBits;
+
+                _serialPortSettings = value;
+            }
+        } private SerialPortSettings _serialPortSettings;
+        #endregion //SerialPortSettings
+
+        //public string Setting
+        //{
+        //    get
+        //    {
+        //        string s = string.Format(
+        //            "{0},{1},{2},{3}",
+        //            this.BaudRate, this.Parity, this.DataBits, this.StopBits
+        //            );
+        //        return s;
+        //    }
+        //    set
+        //    {
+        //        string[] ss = value.Split(',');
+        //        if (ss.Length == 4)
+        //        {
+        //            int baudRate = int.Parse(ss[0]);
+        //            Parity parity = (Parity)Enum.Parse(typeof(Parity), ss[1]);
+        //            int dataBits = int.Parse(ss[2]);
+        //            StopBits stopBits = (StopBits)Enum.Parse(typeof(StopBits), ss[3]);
+
+        //            this.BaudRate = baudRate;
+        //            this.Parity = parity;
+        //            this.DataBits = dataBits;
+        //            this.StopBits = stopBits;
+
+        //        }
+        //        else
+        //        {
+        //            throw new ArgumentException("setting");
+        //        }
+        //    }
+        //}
 
         public int BaudRate
         {
@@ -144,7 +172,7 @@ namespace SocketClient
             get { return this.SerialPort.StopBits; }
             set { this.SerialPort.StopBits = value; }
         }
-        public int DataBits 
+        public int DataBits
         {
             get { return this.SerialPort.DataBits; }
             set { this.SerialPort.DataBits = value; }
@@ -156,11 +184,11 @@ namespace SocketClient
             set { this.SerialPort.Parity = value; }
         }
 
-        public string PortName
-        {
-            get { return this.SerialPort.PortName; }
-            set { this.SerialPort.PortName = value; }
-        }
+        //public string PortName
+        //{
+        //    get { return this.SerialPort.PortName; }
+        //    set { this.SerialPort.PortName = value; }
+        //}
 
         ///// <summary>
         ///// 

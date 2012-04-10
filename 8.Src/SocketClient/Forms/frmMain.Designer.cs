@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpConnectTo = new System.Windows.Forms.GroupBox();
             this.cmbPort = new System.Windows.Forms.ComboBox();
             this.cmbIPAddress = new System.Windows.Forms.ComboBox();
@@ -38,11 +39,6 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.grpReceived = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDatas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCopy = new System.Windows.Forms.Button();
             this.rdoHex = new System.Windows.Forms.RadioButton();
             this.rdoAsc = new System.Windows.Forms.RadioButton();
@@ -66,6 +62,7 @@
             this.mnuSerialPort = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenSerialPort = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCloseSerialPort = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEnableTransmit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSerialPortSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuReply = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +71,11 @@
             this.mnuReplySetting = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEnableTransmit = new System.Windows.Forms.ToolStripMenuItem();
+            this.colDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDatas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpConnectTo.SuspendLayout();
             this.grpReceived.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -181,41 +182,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(656, 249);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // colDT
-            // 
-            this.colDT.HeaderText = "时间";
-            this.colDT.Name = "colDT";
-            this.colDT.ReadOnly = true;
-            this.colDT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colFrom
-            // 
-            this.colFrom.HeaderText = "从";
-            this.colFrom.Name = "colFrom";
-            this.colFrom.ReadOnly = true;
-            this.colFrom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colTO
-            // 
-            this.colTO.HeaderText = "到";
-            this.colTO.Name = "colTO";
-            this.colTO.ReadOnly = true;
-            this.colTO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colLength
-            // 
-            this.colLength.HeaderText = "长度";
-            this.colLength.Name = "colLength";
-            this.colLength.ReadOnly = true;
-            this.colLength.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colDatas
-            // 
-            this.colDatas.HeaderText = "数据";
-            this.colDatas.Name = "colDatas";
-            this.colDatas.ReadOnly = true;
-            this.colDatas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btnCopy
             // 
@@ -458,26 +424,33 @@
             // mnuOpenSerialPort
             // 
             this.mnuOpenSerialPort.Name = "mnuOpenSerialPort";
-            this.mnuOpenSerialPort.Size = new System.Drawing.Size(152, 22);
+            this.mnuOpenSerialPort.Size = new System.Drawing.Size(130, 22);
             this.mnuOpenSerialPort.Text = "打开(&O)";
             this.mnuOpenSerialPort.Click += new System.EventHandler(this.mnuOpenSerialPort_Click);
             // 
             // mnuCloseSerialPort
             // 
             this.mnuCloseSerialPort.Name = "mnuCloseSerialPort";
-            this.mnuCloseSerialPort.Size = new System.Drawing.Size(152, 22);
+            this.mnuCloseSerialPort.Size = new System.Drawing.Size(130, 22);
             this.mnuCloseSerialPort.Text = "关闭(&C)";
             this.mnuCloseSerialPort.Click += new System.EventHandler(this.mnuCloseSerialPort_Click);
+            // 
+            // mnuEnableTransmit
+            // 
+            this.mnuEnableTransmit.Name = "mnuEnableTransmit";
+            this.mnuEnableTransmit.Size = new System.Drawing.Size(130, 22);
+            this.mnuEnableTransmit.Text = "转发(&E)";
+            this.mnuEnableTransmit.Click += new System.EventHandler(this.mnuEnableTransmit_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(127, 6);
             // 
             // mnuSerialPortSetting
             // 
             this.mnuSerialPortSetting.Name = "mnuSerialPortSetting";
-            this.mnuSerialPortSetting.Size = new System.Drawing.Size(152, 22);
+            this.mnuSerialPortSetting.Size = new System.Drawing.Size(130, 22);
             this.mnuSerialPortSetting.Text = "设置(&S)...";
             this.mnuSerialPortSetting.Click += new System.EventHandler(this.mnuSerialPortSetting_Click);
             // 
@@ -494,19 +467,19 @@
             // mnuEnableReply
             // 
             this.mnuEnableReply.Name = "mnuEnableReply";
-            this.mnuEnableReply.Size = new System.Drawing.Size(152, 22);
+            this.mnuEnableReply.Size = new System.Drawing.Size(136, 22);
             this.mnuEnableReply.Text = "启用回复(&A)";
             this.mnuEnableReply.Click += new System.EventHandler(this.mnuEnableReply_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
             // 
             // mnuReplySetting
             // 
             this.mnuReplySetting.Name = "mnuReplySetting";
-            this.mnuReplySetting.Size = new System.Drawing.Size(152, 22);
+            this.mnuReplySetting.Size = new System.Drawing.Size(136, 22);
             this.mnuReplySetting.Text = "设置(&S)...";
             this.mnuReplySetting.Click += new System.EventHandler(this.mnuReplySetting_Click);
             // 
@@ -525,12 +498,43 @@
             this.mnuAbout.Text = "关于(&A)...";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
-            // mnuEnableTransmit
+            // colDT
             // 
-            this.mnuEnableTransmit.Name = "mnuEnableTransmit";
-            this.mnuEnableTransmit.Size = new System.Drawing.Size(152, 22);
-            this.mnuEnableTransmit.Text = "转发(&E)";
-            this.mnuEnableTransmit.Click += new System.EventHandler(this.mnuEnableTransmit_Click);
+            dataGridViewCellStyle1.Format = "yyyy-MM-dd hh:mm:ss.fff";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colDT.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colDT.HeaderText = "时间";
+            this.colDT.Name = "colDT";
+            this.colDT.ReadOnly = true;
+            this.colDT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colFrom
+            // 
+            this.colFrom.HeaderText = "从";
+            this.colFrom.Name = "colFrom";
+            this.colFrom.ReadOnly = true;
+            this.colFrom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colTO
+            // 
+            this.colTO.HeaderText = "到";
+            this.colTO.Name = "colTO";
+            this.colTO.ReadOnly = true;
+            this.colTO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colLength
+            // 
+            this.colLength.HeaderText = "长度";
+            this.colLength.Name = "colLength";
+            this.colLength.ReadOnly = true;
+            this.colLength.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colDatas
+            // 
+            this.colDatas.HeaderText = "数据";
+            this.colDatas.Name = "colDatas";
+            this.colDatas.ReadOnly = true;
+            this.colDatas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // frmMain
             // 
@@ -606,12 +610,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mnuReplySetting;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem mnuEnableTransmit;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFrom;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLength;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDatas;
-        private System.Windows.Forms.ToolStripMenuItem mnuEnableTransmit;
     }
 }
 

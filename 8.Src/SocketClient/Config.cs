@@ -20,10 +20,10 @@ namespace SocketClient
         {
         }
 
+        #region IPAddressList
         /// <summary>
         /// 
         /// </summary>
-        /// 
         public List<string> IPAddressList
         {
             get
@@ -36,6 +36,7 @@ namespace SocketClient
             }
             set { _ipAddressList = value; }
         } private List<string> _ipAddressList;
+        #endregion //IPAddressList
 
         /// <summary>
         /// 
@@ -93,6 +94,7 @@ namespace SocketClient
         #endregion //LastPort
 
 
+        #region LogDataMode
         /// <summary>
         /// 
         /// </summary>
@@ -101,7 +103,9 @@ namespace SocketClient
             get { return _logDataMode; }
             set { _logDataMode = value; }
         } private DataMode _logDataMode;
+        #endregion //LogDataMode
 
+        #region SendDataMode
         /// <summary>
         /// 
         /// </summary>
@@ -110,6 +114,9 @@ namespace SocketClient
             get { return _sendDataMode; }
             set { _sendDataMode = value; }
         } private DataMode _sendDataMode;
+        #endregion //SendDataMode
+
+        #region MarkIPAddress
         /// <summary>
         /// 
         /// </summary>
@@ -123,7 +130,9 @@ namespace SocketClient
             }
             this.LastIPAddress = ip;
         }
+        #endregion //MarkIPAddress
 
+        #region MarkPort
         /// <summary>
         /// 
         /// </summary>
@@ -136,6 +145,7 @@ namespace SocketClient
             }
             this.LastPort = port;
         }
+        #endregion //MarkPort
 
         #region ListViewColumnWidths
         /// <summary>
@@ -206,8 +216,7 @@ namespace SocketClient
         //    set { _bytes = value; }
         //} private byte[] _bytes;
 
-
-
+        #region SendCollection
         /// <summary>
         /// 
         /// </summary>
@@ -224,5 +233,31 @@ namespace SocketClient
             }
             set { _sendCollection = value; }
         } private SendCollection _sendCollection;
+
+        #endregion //SendCollection
+
+        #region SerialPortSettings
+        /// <summary>
+        /// 
+        /// </summary>
+        public SerialPortSettings SerialPortSettings
+        {
+            get
+            {
+                if (_serialPortSettings == null)
+                {
+                    _serialPortSettings = SerialPortSettings.Default;
+                }
+                return _serialPortSettings;
+            }
+            set
+            {
+                _serialPortSettings = value;
+            }
+        } private SerialPortSettings _serialPortSettings;
+        #endregion //SerialPortSettings
+
+
+
     }
 }

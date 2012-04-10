@@ -72,6 +72,7 @@ namespace SocketClient
                 if (_serialPortManager == null)
                 {
                     _serialPortManager = new SerialPortManager();
+                    _serialPortManager.SerialPortSettings = Config.SerialPortSettings;
                 }
                 return _serialPortManager;
             }
