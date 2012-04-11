@@ -259,6 +259,7 @@ namespace SocketClient
         }
         #endregion //InitControls
 
+        #region CreateContextMenu
         /// <summary>
         /// 
         /// </summary>
@@ -283,7 +284,9 @@ namespace SocketClient
                 this.AddSendItemToContextMenu(si, i+1);
             }
         }
+        #endregion //CreateContextMenu
 
+        #region SendManage_Click
         /// <summary>
         /// 
         /// </summary>
@@ -303,9 +306,11 @@ namespace SocketClient
 
             CreateContextMenu();
         }
+        #endregion //SendManage_Click
 
 
 
+        #region SendAdd_Click
         void SendAdd_Click(object sender, EventArgs e)
         {
             byte[] bs ;
@@ -324,18 +329,15 @@ namespace SocketClient
                 }
             }
         }
+        #endregion //SendAdd_Click
 
+        #region AddSendItemToContextMenu
         /// <summary>
         /// 
         /// </summary>
         /// <param name="item"></param>
         private void AddSendItemToContextMenu(SendItem item, int no)
         {
-            //string s = (string)HexStringConverter.Default.ConvertToObject(item.Bytes);
-            //if (s.Length > 20)
-            //{
-            //    s = s.Substring(0, 20) + "...";
-            //}
             string s = string.Format(
                 "{0}: {1}",
                 GetNoMenuText(no), 
@@ -348,7 +350,9 @@ namespace SocketClient
 
             this.contextMenuStrip1.Items.Add (menuitem);
         }
+        #endregion //AddSendItemToContextMenu
 
+        #region GetNoMenuText
         /// <summary>
         /// 
         /// </summary>
@@ -365,7 +369,9 @@ namespace SocketClient
                 return no.ToString();
             }
         }
+        #endregion //GetNoMenuText
 
+        #region menuitem_Click
         /// <summary>
         /// 
         /// </summary>
@@ -377,17 +383,9 @@ namespace SocketClient
             SendItem senditem = (SendItem)item.Tag;
             SetSendBytes(senditem.Bytes); 
         }
+        #endregion //menuitem_Click
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void SendConfig_Click(object sender, EventArgs e)
-        {
-            NUnit.UiKit.UserMessage.Display("config send");
-        }
-
+        #region SendCollection
         /// <summary>
         /// 
         /// </summary>
@@ -398,7 +396,9 @@ namespace SocketClient
                 return App.Default.Config.SendCollection;
             }
         }
+        #endregion //SendCollection
 
+        #region ColumnWidths
         /// <summary>
         /// 
         /// </summary>
@@ -424,7 +424,9 @@ namespace SocketClient
                 return _columnWidths;
             }
         } private int[] _columnWidths;
+        #endregion //ColumnWidths
 
+        #region RefreshSocketState
         /// <summary>
         /// 
         /// </summary>
@@ -445,7 +447,9 @@ namespace SocketClient
             }
             this.tssSocket.Text = s;
         }
+        #endregion //RefreshSocketState
 
+        #region RefreshTransmitState
         private void RefreshTransmitState()
         {
             this.mnuEnableTransmit.Checked = this.Transmitter.Enable; ;
@@ -456,7 +460,9 @@ namespace SocketClient
                 );
             this.tssTransmitter.Text = s;
         }
+        #endregion //RefreshTransmitState
 
+        #region RefreshReplyState
         private void RefreshReplyState()
         {
             this.mnuEnableReply.Checked = this.ReplyCollection.Enabled;
@@ -466,7 +472,9 @@ namespace SocketClient
                 );
             this.tssReply.Text = s;
         }
+        #endregion //RefreshReplyState
 
+        #region RefreshSerialPortState
         /// <summary>
         /// 
         /// </summary>
@@ -481,6 +489,7 @@ namespace SocketClient
                 this.SerialPortManager.SerialPortSettings,
                 this.SerialPortManager.IsOpen ? Strings.Opened : Strings.Closed);
         }
+        #endregion //RefreshSerialPortState
 
         #region FillCRCerCombox
         /// <summary>
@@ -622,8 +631,6 @@ namespace SocketClient
         /// </summary>
         private void Disconnect()
         {
-            //this.SocketClient.Socket.Shutdown(SocketShutdown.Both);
-            //this.SocketClient.Socket.Disconnect(true);
             this.SocketClient.Close();
             SetDisconnectState();
         }
@@ -693,10 +700,8 @@ namespace SocketClient
         {
             this.cmbIPAddress.Enabled = true;
             this.cmbPort.Enabled = true;
-            //this.grpConnectTo.Text = "ConnectTo";
             this.btnConnect.Text = Strings.Connect;
 
-            //this.grpReceived.Enabled = false;
             this.grpSend.Enabled = false;
 
             RefreshSocketState();
@@ -828,13 +833,12 @@ namespace SocketClient
         /// <param name="e"></param>
         private void btnClearReceived_Click(object sender, EventArgs e)
         {
-            //this.txtLog.Clear();
-
             this.LogManager.Items.Clear();
             this.dataGridView1.Rows.Clear();
         }
         #endregion //btnClearReceived_Click
 
+        #region LogManager
         /// <summary>
         /// 
         /// </summary>
@@ -842,6 +846,7 @@ namespace SocketClient
         {
             get { return App.Default.LogManager; }
         }
+        #endregion //LogManager
 
         #region grpReceived_Enter
         private void grpReceived_Enter(object sender, EventArgs e)
@@ -867,6 +872,7 @@ namespace SocketClient
         }
         #endregion //toolStripButton1_Click
 
+        #region ReplyCollection
         /// <summary>
         /// 
         /// </summary>
@@ -874,6 +880,7 @@ namespace SocketClient
         {
             get { return App.Default.ReplyManager.ReplyCollection; }
         }
+        #endregion //ReplyCollection
 
         #region btnCopy_Click
         /// <summary>
@@ -902,6 +909,7 @@ namespace SocketClient
         }
         #endregion //IsClearSend
 
+        #region AddReceived
         /// <summary>
         /// 
         /// </summary>
@@ -912,7 +920,9 @@ namespace SocketClient
         {
             AddLog(from, to, bs, DataDirection.In);
         }
+        #endregion //AddReceived
 
+        #region AddSend
         /// <summary>
         /// 
         /// </summary>
@@ -923,6 +933,7 @@ namespace SocketClient
         {
             AddLog(from, to, bs, DataDirection.Out);
         }
+        #endregion //AddSend
 
 
         #region AddLog
@@ -1018,24 +1029,33 @@ namespace SocketClient
         } private SendOrPostCallback _sendOrPostCallback;
         #endregion //GetSendOrPostCallback
 
+        #region GetRemoteString
         private string GetRemoteString()
         {
             return  App.Default.SocketClient.RemoteEndPoint.ToString();
         }
+        #endregion //GetRemoteString
 
+        #region GetLocalString
         private string GetLocalString()
         {
             return App.Default.SocketClient.LocalEndPoint.ToString() + this.GetMe();
         }
+        #endregion //GetLocalString
 
+        #region GetSerialPortName
         private string GetSerialPortName()
         {
             return App.Default.SerialPortManager.SerialPortSettings.PortName;
         }
+        #endregion //GetSerialPortName
+
+        #region GetMe
         private string GetMe()
         {
             return "(me)";
         }
+        #endregion //GetMe
 
 
         #region SendOrPostCallbackTarget
@@ -1199,6 +1219,7 @@ namespace SocketClient
         }
         #endregion //rbSendHex_Click
 
+        #region mnuEnableTransmit_Click
         /// <summary>
         /// 
         /// </summary>
@@ -1209,7 +1230,9 @@ namespace SocketClient
             this.Transmitter.Enable = !this.Transmitter.Enable;
             this.RefreshTransmitState();
         }
+        #endregion //mnuEnableTransmit_Click
 
+        #region mnuSerialPortSetting_Click
         /// <summary>
         /// 
         /// </summary>
@@ -1227,7 +1250,9 @@ namespace SocketClient
                 //RefreshStatus();
             }
         }
+        #endregion //mnuSerialPortSetting_Click
 
+        #region mnuEnableReply_Click
         /// <summary>
         /// 
         /// </summary>
@@ -1239,7 +1264,9 @@ namespace SocketClient
             RefreshReplyState();
 
         }
+        #endregion //mnuEnableReply_Click
 
+        #region mnuReplySetting_Click
         /// <summary>
         /// 
         /// </summary>
@@ -1250,6 +1277,7 @@ namespace SocketClient
             frmReplyManager f = new frmReplyManager(this.ReplyCollection);
             f.ShowDialog();
         }
+        #endregion //mnuReplySetting_Click
 
         #region mnuOpenSerialPort_Click
         /// <summary>
@@ -1318,6 +1346,7 @@ namespace SocketClient
         }
         #endregion //frmMain_FormClosed
 
+        #region rdoAsc_Click
         /// <summary>
         /// 
         /// </summary>
@@ -1328,7 +1357,9 @@ namespace SocketClient
             this.Config.LogDataMode = DataMode.Ascii;
             RefreshLogDataGridView();
         }
+        #endregion //rdoAsc_Click
 
+        #region RefreshLogDataGridView
         /// <summary>
         /// 
         /// </summary>
@@ -1347,13 +1378,17 @@ namespace SocketClient
                 this.AddLog(li);
             }
         }
+        #endregion //RefreshLogDataGridView
 
+        #region rdoHex_Click
         private void rdoHex_Click(object sender, EventArgs e)
         {
             this.Config.LogDataMode = DataMode.Hex;
             RefreshLogDataGridView();
         }
+        #endregion //rdoHex_Click
 
+        #region mnuExit_Click
         /// <summary>
         /// 
         /// </summary>
@@ -1363,7 +1398,9 @@ namespace SocketClient
         {
             Environment.Exit(0);
         }
+        #endregion //mnuExit_Click
 
+        #region mnuAbout_Click
         /// <summary>
         /// 
         /// </summary>
@@ -1382,7 +1419,9 @@ namespace SocketClient
                 MessageBoxButtons.OK, 
                 MessageBoxIcon.Information);
         }
+        #endregion //mnuAbout_Click
 
+        #region txtSend_KeyPress
         /// <summary>
         /// 
         /// </summary>
@@ -1395,7 +1434,9 @@ namespace SocketClient
                 KeyPressHelper.Process(sender, e);
             }
         }
+        #endregion //txtSend_KeyPress
 
+        #region mnuSaveLog_Click
         /// <summary>
         /// 
         /// </summary>
@@ -1420,5 +1461,6 @@ namespace SocketClient
                 }
             }
         }
+        #endregion //mnuSaveLog_Click
     }
 }
