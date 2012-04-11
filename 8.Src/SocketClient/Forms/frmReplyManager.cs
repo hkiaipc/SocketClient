@@ -154,7 +154,15 @@ namespace SocketClient
 
         private void lvReply_KeyUp(object sender, KeyEventArgs e)
         {
-            DeleteListViewItem();
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteListViewItem();
+            }
+        }
+
+        private void frmReplyManager_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
