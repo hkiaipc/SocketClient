@@ -31,10 +31,22 @@ namespace SocketClient
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            ListViewItem lvi = GetSelected();
+            DeleteSelectedListViewItem(true);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displaySelectMessage"></param>
+        private void DeleteSelectedListViewItem(bool displaySelectMessage)
+        {
+            ListViewItem lvi = GetSelectedListViewItem();
             if (lvi == null)
             {
-                SelectListViewItemFirst();
+                if (displaySelectMessage)
+                {
+                    SelectListViewItemFirst();
+                }
                 return;
             }
 
@@ -78,7 +90,7 @@ namespace SocketClient
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ListViewItem lvi = GetSelected();
+            ListViewItem lvi = GetSelectedListViewItem();
             if (lvi == null)
             {
                 SelectListViewItemFirst();
@@ -101,7 +113,7 @@ namespace SocketClient
         /// 
         /// </summary>
         /// <returns></returns>
-        private ListViewItem GetSelected()
+        private ListViewItem GetSelectedListViewItem()
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -145,7 +157,15 @@ namespace SocketClient
         /// <param name="e"></param>
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            ListViewItem lvi= GetSelected();
+            SelectSendItem();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SelectSendItem()
+        {
+            ListViewItem lvi= GetSelectedListViewItem();
             if (lvi != null)
             {
                 SendItem item = lvi.Tag as SendItem;
@@ -171,5 +191,28 @@ namespace SocketClient
                 return _selectedSendItem;
             }
         } private SendItem _selectedSendItem;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            SelectSendItem();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteSelectedListViewItem(false);
+            }
+        }
     }
 }

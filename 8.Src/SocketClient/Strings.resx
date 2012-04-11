@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>关于</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>添加</value>
+  </data>
   <data name="AreYouSureDelete" xml:space="preserve">
     <value>确定删除吗?</value>
   </data>
@@ -130,7 +133,7 @@
     <value>已关闭</value>
   </data>
   <data name="Connect" xml:space="preserve">
-    <value>连接</value>
+    <value>连接(&amp;C)</value>
   </data>
   <data name="ConnectdFromTo" xml:space="preserve">
     <value>已连接: {0} - {1}</value>
@@ -148,7 +151,10 @@
     <value>禁用</value>
   </data>
   <data name="Disconnect" xml:space="preserve">
-    <value>断开</value>
+    <value>断开(&amp;D)</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>修改</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>启用</value>

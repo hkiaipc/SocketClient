@@ -56,34 +56,6 @@ namespace SocketClient
     /// </summary>
     public class SendCollection : System.Collections.Generic.List<SendItem>
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public int MaxCount
-        {
-            get { return _maxCount; }
-            set
-            {
-                _maxCount = value;
-                if (_maxCount < 1)
-                {
-                    _maxCount = 1;
-                }
-            }
-        } private int _maxCount = 10;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sendItem"></param>
-        public new void Add(SendItem sendItem)
-        {
-            base.Add(sendItem);
-            if (this.Count > this.MaxCount)
-            {
-                this.RemoveAt(0);
-            }
-        }
     }
 
     /// <summary>

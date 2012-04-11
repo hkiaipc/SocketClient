@@ -17,6 +17,10 @@ namespace SocketClient
         {
             InitializeComponent();
             this.SendItem = new SendItem();
+            this.Text = string.Format(
+                "{0} - {1}",
+                this.Text,
+                Strings.Add);
         }
 
         /// <summary>
@@ -37,6 +41,11 @@ namespace SocketClient
 
             this.txtName.Text = this.SendItem.Name;
             this.txtDatas.Text = HexStringConverter.Default.ConvertToObject(this.SendItem.Bytes).ToString();
+
+            this.Text = string.Format(
+                "{0} - {1}",
+                this.Text,
+                Strings.Edit);
         }
 
         /// <summary>

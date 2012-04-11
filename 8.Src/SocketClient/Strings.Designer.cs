@@ -70,6 +70,15 @@ namespace SocketClient {
         }
         
         /// <summary>
+        ///   查找类似 添加 的本地化字符串。
+        /// </summary>
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 确定删除吗? 的本地化字符串。
         /// </summary>
         internal static string AreYouSureDelete {
@@ -97,7 +106,7 @@ namespace SocketClient {
         }
         
         /// <summary>
-        ///   查找类似 连接 的本地化字符串。
+        ///   查找类似 连接(&amp;C) 的本地化字符串。
         /// </summary>
         internal static string Connect {
             get {
@@ -151,11 +160,20 @@ namespace SocketClient {
         }
         
         /// <summary>
-        ///   查找类似 断开 的本地化字符串。
+        ///   查找类似 断开(&amp;D) 的本地化字符串。
         /// </summary>
         internal static string Disconnect {
             get {
                 return ResourceManager.GetString("Disconnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 修改 的本地化字符串。
+        /// </summary>
+        internal static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         

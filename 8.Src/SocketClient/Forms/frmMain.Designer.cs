@@ -44,14 +44,13 @@
             this.colTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDatas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCopy = new System.Windows.Forms.Button();
             this.rdoHex = new System.Windows.Forms.RadioButton();
             this.rdoAsc = new System.Windows.Forms.RadioButton();
             this.btnClearReceived = new System.Windows.Forms.Button();
             this.grpSend = new System.Windows.Forms.GroupBox();
             this.rbSendHex = new System.Windows.Forms.RadioButton();
             this.rbSendAsc = new System.Windows.Forms.RadioButton();
-            this.btnSendContentSelect = new System.Windows.Forms.Button();
+            this.btnSendHistory = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnSend = new System.Windows.Forms.Button();
             this.txtSend = new System.Windows.Forms.TextBox();
@@ -63,6 +62,8 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSaveLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSerialPort = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenSerialPort = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,7 +147,6 @@
             // grpReceived
             // 
             this.grpReceived.Controls.Add(this.dataGridView1);
-            this.grpReceived.Controls.Add(this.btnCopy);
             this.grpReceived.Controls.Add(this.rdoHex);
             this.grpReceived.Controls.Add(this.rdoAsc);
             this.grpReceived.Controls.Add(this.btnClearReceived);
@@ -221,17 +221,6 @@
             this.colDatas.ReadOnly = true;
             this.colDatas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // btnCopy
-            // 
-            this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopy.Location = new System.Drawing.Point(670, 217);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(75, 23);
-            this.btnCopy.TabIndex = 4;
-            this.btnCopy.Text = "复制";
-            this.btnCopy.UseVisualStyleBackColor = true;
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
-            // 
             // rdoHex
             // 
             this.rdoHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -265,7 +254,7 @@
             this.btnClearReceived.Name = "btnClearReceived";
             this.btnClearReceived.Size = new System.Drawing.Size(75, 23);
             this.btnClearReceived.TabIndex = 1;
-            this.btnClearReceived.Text = "清除";
+            this.btnClearReceived.Text = "清除(&L)";
             this.btnClearReceived.UseVisualStyleBackColor = true;
             this.btnClearReceived.Click += new System.EventHandler(this.btnClearReceived_Click);
             // 
@@ -273,7 +262,7 @@
             // 
             this.grpSend.Controls.Add(this.rbSendHex);
             this.grpSend.Controls.Add(this.rbSendAsc);
-            this.grpSend.Controls.Add(this.btnSendContentSelect);
+            this.grpSend.Controls.Add(this.btnSendHistory);
             this.grpSend.Controls.Add(this.btnSend);
             this.grpSend.Controls.Add(this.txtSend);
             this.grpSend.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -312,18 +301,18 @@
             this.rbSendAsc.UseVisualStyleBackColor = true;
             this.rbSendAsc.Click += new System.EventHandler(this.rbSendAsc_Click);
             // 
-            // btnSendContentSelect
+            // btnSendHistory
             // 
-            this.btnSendContentSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSendContentSelect.ContextMenuStrip = this.contextMenuStrip1;
-            this.btnSendContentSelect.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendContentSelect.Location = new System.Drawing.Point(670, 64);
-            this.btnSendContentSelect.Name = "btnSendContentSelect";
-            this.btnSendContentSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnSendContentSelect.TabIndex = 11;
-            this.btnSendContentSelect.Text = "...";
-            this.btnSendContentSelect.UseVisualStyleBackColor = true;
-            this.btnSendContentSelect.Click += new System.EventHandler(this.btnSendContentSelect_Click);
+            this.btnSendHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSendHistory.ContextMenuStrip = this.contextMenuStrip1;
+            this.btnSendHistory.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendHistory.Location = new System.Drawing.Point(670, 64);
+            this.btnSendHistory.Name = "btnSendHistory";
+            this.btnSendHistory.Size = new System.Drawing.Size(75, 23);
+            this.btnSendHistory.TabIndex = 11;
+            this.btnSendHistory.Text = "历史(&A)";
+            this.btnSendHistory.UseVisualStyleBackColor = true;
+            this.btnSendHistory.Click += new System.EventHandler(this.btnSendHistory_Click);
             // 
             // contextMenuStrip1
             // 
@@ -339,7 +328,7 @@
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 2;
-            this.btnSend.Text = "发送";
+            this.btnSend.Text = "发送(&S)";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
@@ -436,15 +425,28 @@
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSaveLog,
+            this.toolStripSeparator3,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(59, 20);
             this.mnuFile.Text = "文件(&F)";
             // 
+            // mnuSaveLog
+            // 
+            this.mnuSaveLog.Name = "mnuSaveLog";
+            this.mnuSaveLog.Size = new System.Drawing.Size(130, 22);
+            this.mnuSaveLog.Text = "保存(&S)...";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(127, 6);
+            // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(112, 22);
+            this.mnuExit.Size = new System.Drawing.Size(130, 22);
             this.mnuExit.Text = "退出(&X)";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -583,12 +585,11 @@
         private System.Windows.Forms.TextBox txtSend;
         private System.Windows.Forms.RadioButton rdoHex;
         private System.Windows.Forms.RadioButton rdoAsc;
-        private System.Windows.Forms.Button btnSendContentSelect;
+        private System.Windows.Forms.Button btnSendHistory;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tssSocket;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.ToolStripStatusLabel tssSerialPort;
         private System.Windows.Forms.ToolStripStatusLabel tssTransmitter;
         private System.Windows.Forms.ToolStripStatusLabel tssReply;
@@ -617,6 +618,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLength;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDatas;
+        private System.Windows.Forms.ToolStripMenuItem mnuSaveLog;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

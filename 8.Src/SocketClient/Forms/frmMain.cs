@@ -336,14 +336,34 @@ namespace SocketClient
             //{
             //    s = s.Substring(0, 20) + "...";
             //}
-            string s = item.Name;
-            s = no.ToString("00") + ": " + s;
+            string s = string.Format(
+                "{0}: {1}",
+                GetNoMenuText(no), 
+                item.Name);
+
 
             ToolStripMenuItem menuitem = new ToolStripMenuItem(s);
             menuitem.Tag = item;
             menuitem.Click += new EventHandler(menuitem_Click);
 
             this.contextMenuStrip1.Items.Add (menuitem);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="no"></param>
+        /// <returns></returns>
+        private string GetNoMenuText(int no)
+        {
+            if (no < 10)
+            {
+                return "0&" + no.ToString();
+            }
+            else
+            {
+                return no.ToString();
+            }
         }
 
         /// <summary>
@@ -830,13 +850,13 @@ namespace SocketClient
         }
         #endregion //grpReceived_Enter
 
-        #region btnSendContentSelect_Click
-        private void btnSendContentSelect_Click(object sender, EventArgs e)
+        #region btnSendHistory_Click
+        private void btnSendHistory_Click(object sender, EventArgs e)
         {
             Point pt = Form.MousePosition;
             this.contextMenuStrip1.Show(pt);
         }
-        #endregion //btnSendContentSelect_Click
+        #endregion //btnSendHistory_Click
 
 
         #region toolStripButton1_Click
