@@ -118,5 +118,15 @@ namespace SocketClient
             }
         } private bool _isEdit;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtDatas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressHelper.Process(sender, e);
+        }
+
     }
 }

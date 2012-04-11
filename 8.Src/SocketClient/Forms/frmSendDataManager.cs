@@ -41,11 +41,12 @@ namespace SocketClient
             DialogResult dr = NUnit.UiKit.UserMessage.Ask(Strings.AreYouSureDelete);
             if (dr == DialogResult.Yes)
             {
+                int index = lvi.Index;
+
                 SendItem item = lvi.Tag as SendItem;
                 listView1.Items.Remove(lvi);
                 App.Default.Config.SendCollection.Remove(item);
 
-                int index = lvi.Index;
                 if (this.listView1.Items.Count > 0)
                 {
                     if (index >= this.listView1.Items.Count)
@@ -136,5 +137,39 @@ namespace SocketClient
             lvi.SubItems.Add(s);
             lvi.Tag = item;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            ListViewItem lvi= GetSelected();
+            if (lvi != null)
+            {
+                SendItem item = lvi.Tag as SendItem;
+                this._selectedSendItem = item;
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                SelectListViewItemFirst();
+                return;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public SendItem SelectedSendItem
+        {
+            get
+            {
+                return _selectedSendItem;
+            }
+        } private SendItem _selectedSendItem;
     }
 }

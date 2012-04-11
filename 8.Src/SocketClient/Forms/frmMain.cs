@@ -292,7 +292,14 @@ namespace SocketClient
         void SendManage_Click(object sender, EventArgs e)
         {
             frmSendDataManager f = new frmSendDataManager();
-            f.ShowDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                SendItem selectedItem  = f.SelectedSendItem ;
+                if (selectedItem != null)
+                {
+                    SetSendBytes(selectedItem.Bytes);
+                }
+            }
 
             CreateContextMenu();
         }
@@ -1365,21 +1372,8 @@ namespace SocketClient
         {
             if (rbSendHex.Checked)
             {
-                char key= e.KeyChar;
-
-                if (char.IsDigit(key) ||
-                    (key >= 'a' && key <= 'f') ||
-                    (key >= 'A' && key <= 'F') ||
-                    key == ' ')
-                {
-
-                }
-                else
-                {
-                    e.KeyChar = (char)0;
-                }
+                KeyPressHelper.Process(sender, e);
             }
         }
-
     }
 }

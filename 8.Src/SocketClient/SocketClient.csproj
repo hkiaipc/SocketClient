@@ -57,6 +57,7 @@
     <Compile Include="Forms\frmSendData.Designer.cs">
       <DependentUpon>frmSendData.cs</DependentUpon>
     </Compile>
+    <Compile Include="KeyPressHelper.cs" />
     <Compile Include="ReplyCollection.cs" />
     <Compile Include="DataDirection.cs" />
     <Compile Include="DataMode.cs" />

@@ -70,6 +70,7 @@
             this.txtDatas.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDatas.Size = new System.Drawing.Size(350, 90);
             this.txtDatas.TabIndex = 3;
+            this.txtDatas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDatas_KeyPress);
             // 
             // btnCancel
             // 
