@@ -48,6 +48,11 @@ namespace SocketClient
             return Match(s);
         }
 
+        public ReplyItem()
+        {
+
+        }
+
         public ReplyItem(string name, string description, bool enabled, string receivedPattern, byte[] replyBytes)
         {
             this.Name = name;

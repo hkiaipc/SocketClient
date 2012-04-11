@@ -250,6 +250,15 @@ namespace SocketClient {
         }
         
         /// <summary>
+        ///   查找类似 接收或回复数据长度不能为0 的本地化字符串。
+        /// </summary>
+        internal static string ReceivedReplyLengthZero {
+            get {
+                return ResourceManager.GetString("ReceivedReplyLengthZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 回复 的本地化字符串。
         /// </summary>
         internal static string Reply {

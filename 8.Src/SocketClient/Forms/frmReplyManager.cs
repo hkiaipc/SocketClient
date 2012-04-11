@@ -11,7 +11,7 @@ namespace SocketClient
 {
     public partial class frmReplyManager : Form
     {
-        public frmReplyManager( ReplyCollection asc)
+        public frmReplyManager(ReplyCollection asc)
         {
             InitializeComponent();
             this._asc = asc;
@@ -48,27 +48,21 @@ namespace SocketClient
         /// 
         /// </summary>
         /// <param name="i"></param>
-        private void AddReplyItemToListView(ReplyItem i)
+        private void AddReplyItemToListView(ReplyItem ri)
         {
-            ListViewItem lvi = new ListViewItem(i.Name);
-            lvi.SubItems.Add(i.Description);
-            lvi.Checked = i.Enabled;
-            lvi.Tag = i;
-            this.lvReply.Items.Add(lvi);
-        }
+            ListViewItem lvi = new ListViewItem(ri.Name);
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.lvReply.SelectedItems.Count > 0)
-            {
-                ListViewItem lvi = this.lvReply.SelectedItems[0];
-                ReplyItem asi = lvi.Tag as ReplyItem;
-                
-                this.txtName.Text = asi.Name;
-                this.txtDescription.Text = asi.Description;
-                this.txtReceived.Text = asi.ReceivedPattern;
-                this.txtReply.Text = HexStringConverter.Default.ConvertToObject(asi.ReplyBytes).ToString();
-            }
+            string[] subItems = new string[] 
+            { 
+                ri.ReceivedPattern,
+                HexStringConverter.Default.ConvertToObject(ri.ReplyBytes).ToString(),
+                ri.Description 
+            };
+
+            lvi.SubItems.AddRange(subItems);
+            lvi.Checked = ri.Enabled;
+            lvi.Tag = ri;
+            this.lvReply.Items.Add(lvi);
         }
 
         /// <summary>
@@ -81,29 +75,16 @@ namespace SocketClient
             if (this.lvReply.SelectedItems.Count > 0)
             {
                 ListViewItem lvi = this.lvReply.SelectedItems[0];
-                ReplyItem asi = lvi.Tag as ReplyItem;
-                string receivedPattern = string.Empty ;
-                byte [] bytes = null ;
-                try
+                ReplyItem ri = lvi.Tag as ReplyItem;
+
+                frmReplyItem f = new frmReplyItem(ri);
+                if (f.ShowDialog() == DialogResult.OK)
                 {
-                    receivedPattern = (string)HexStringConverter.Default.ConvertToObject(
-                        HexStringConverter.Default.ConvertToBytes(this.txtReceived.Text.Trim()));
-
-                    bytes = HexStringConverter.Default.ConvertToBytes(this.txtReply.Text.Trim());
+                    lvi.SubItems[0].Text = ri.Name;
+                    lvi.SubItems[1].Text = ri.ReceivedPattern;
+                    lvi.SubItems[2].Text = HexStringConverter.Default.ConvertToObject(ri.ReplyBytes).ToString();
+                    lvi.SubItems[3].Text = ri.Description;
                 }
-                catch (Exception ex)
-                {
-                    NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
-                    return;
-                }
-
-                asi.Name = this.txtName.Text.Trim();
-                asi.Description = this.txtDescription.Text.Trim();
-                asi.ReceivedPattern = receivedPattern;
-                asi.ReplyBytes = bytes;
-
-                lvi.SubItems[0].Text = asi.Name;
-                lvi.SubItems[1].Text = asi.Description;
             }
         }
 
@@ -114,23 +95,14 @@ namespace SocketClient
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ReplyItem n = new ReplyItem(
-                "name", 
-                "description", 
-                false, 
-                "31 32 33",
-                new byte[] { 0x34,0x35,0x36, 0x37, 0x38, 0x39 }
-                );
-            this._asc.Add(n);
-            this.AddReplyItemToListView(n);
-
-            this.lvReply.SelectedIndices.Clear();
-            this.lvReply.SelectedIndices.Add(this.lvReply.Items.Count - 1);
-
-        }
-
-        private void txtBytes_TextChanged(object sender, EventArgs e)
-        {
+            frmReplyItem f = new frmReplyItem();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                ReplyItem ri = f.ReplyItem;
+                this._asc.Add(ri);
+                this.AddReplyItemToListView(ri);
+                this.lvReply.SelectedIndices.Add(this.lvReply.Items.Count - 1);
+            }
 
         }
 
@@ -157,7 +129,7 @@ namespace SocketClient
             {
                 ListViewItem lvi = this.lvReply.SelectedItems[0];
                 int index = lvi.Index;
-                ReplyItem item =  (ReplyItem)lvi.Tag;
+                ReplyItem item = (ReplyItem)lvi.Tag;
 
                 this._asc.Remove(item);
                 lvi.Remove();
@@ -171,15 +143,6 @@ namespace SocketClient
                     this.lvReply.SelectedIndices.Clear();
                     this.lvReply.SelectedIndices.Add(index);
                 }
-                else
-                {
-                    this.txtName.Clear();
-                    this.txtDescription.Clear();
-                    this.txtReceived.Clear();
-                    this.txtReply.Clear();
-                }
-
-                
             }
         }
     }
