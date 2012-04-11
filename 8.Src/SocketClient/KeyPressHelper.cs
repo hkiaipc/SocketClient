@@ -17,6 +17,7 @@ namespace SocketClient
             if (char.IsDigit(key) ||
                 (key >= 'a' && key <= 'f') ||
                 (key >= 'A' && key <= 'F') ||
+                key == (char)System.Windows.Forms.Keys.Back ||
                 key == ' ')
             {
 
