@@ -111,7 +111,7 @@
             this.MinimizeBox = false;
             this.Name = "frmSendData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "发送数据";
+            this.Text = "历史";
             this.ResumeLayout(false);
             this.PerformLayout();
 

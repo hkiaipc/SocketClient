@@ -555,7 +555,6 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Socket Debugger";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.grpConnectTo.ResumeLayout(false);
             this.grpConnectTo.PerformLayout();

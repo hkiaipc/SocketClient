@@ -27,9 +27,6 @@ namespace SocketClient
         }
 
         private ReplyCollection _replyCollection;
-        private void frmAutoSenderCollection_Load(object sender, EventArgs e)
-        {
-        }
 
         /// <summary>
         /// 

@@ -118,7 +118,7 @@
             this.MinimizeBox = false;
             this.Name = "frmSendDataManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "发送数据管理";
+            this.Text = "历史管理";
             this.Load += new System.EventHandler(this.frmSendDataManager_Load);
             this.ResumeLayout(false);
 

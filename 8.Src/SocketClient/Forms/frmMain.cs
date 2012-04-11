@@ -25,13 +25,6 @@ namespace SocketClient
         private const int ID_SOCKETCLOSED = 1;
         private const int ID_SERIALPORT_RECEIVED = 3;
 
-        //private const int ID_RECEIVED = 2;
-
-        #region Members
-        //private SocketClient _socketClient;
-        Transmitter _transmitter = new Transmitter();
-        #endregion //Members
-
         #region frmMain
         /// <summary>
         /// 
@@ -41,6 +34,7 @@ namespace SocketClient
             InitializeComponent();
             InitControls();
             RegisterSocketClientEvents();
+            this.dataGridView1.AutoGenerateColumns = false;
         }
         #endregion //
 
@@ -56,7 +50,9 @@ namespace SocketClient
 
             this.SerialPortManager.ReceivedEvent += new EventHandler(SerialPortManager_ReceivedEvent);
         }
+        #endregion //RegisterSocketClientEvents
 
+        #region SerialPortManager_ReceivedEvent
         /// <summary>
         /// 
         /// </summary>
@@ -68,9 +64,11 @@ namespace SocketClient
             this.Post(ID_SERIALPORT_RECEIVED, bs);
             return;
         }
+        #endregion //SerialPortManager_ReceivedEvent
 
 
 
+        #region Transmit
         /// <summary>
         /// 
         /// </summary>
@@ -107,10 +105,8 @@ namespace SocketClient
                 }
             }
         }
+        #endregion //Transmit
 
-
-
-        #endregion //RegisterSocketClientEvents
 
         #region SocketClient_ReceivedEvent
         /// <summary>
@@ -133,7 +129,6 @@ namespace SocketClient
         /// <param name="e"></param>
         void SocketClient_ClosedEvent(object sender, EventArgs e)
         {
-            //this.SetDisconnectState();
             this.OnSyncSocketClosed();
         }
         #endregion //SocketClient_ClosedEvent
@@ -177,14 +172,9 @@ namespace SocketClient
             this.cmbIPAddress.Text = Config.LastIPAddress;
 
             this.MinimumSize = new Size(400, 600);
-            //this.txtIP.Text = Config.Default.ConnectIP;
-            //this.numPort.Value = Config.Default.ConnectPort;
 
             this.tssTransmitter.Text = "";
             this.tssSocket.Text = "";
-
-            //SetDisConnectState();
-            //FillCRCerCombox();
 
             // socket
             //
@@ -491,17 +481,6 @@ namespace SocketClient
         }
         #endregion //RefreshSerialPortState
 
-        #region FillCRCerCombox
-        /// <summary>
-        /// 
-        /// </summary>
-        private void FillCRCerCombox()
-        {
-            //List<ICRCer> crcers = SocketClientApp.Default.CRCerList;
-            //this.cmbCRC.DataSource = crcers;
-            //this.cmbCRC.DisplayMember = "Name";
-        }
-        #endregion //FillCRCerCombox
 
         #region GetReceiveText
         /// <summary>
@@ -658,7 +637,6 @@ namespace SocketClient
                 NUnit.UiKit.UserMessage.DisplayFailure(socketEx.Message);
                 return;
             }
-            //this.SocketClient.Socket.BeginReceive (
             SetConnectState();
             this.SocketClient.BeginReceive();
         }
@@ -678,14 +656,12 @@ namespace SocketClient
         /// <summary>
         /// 
         /// </summary>
-        //private void SetConnectState(Socket socket)
         private void SetConnectState()
         {
             this.cmbIPAddress.Enabled = false;
             this.cmbPort.Enabled = false;
             this.btnConnect.Text = Strings.Disconnect;
 
-            //this.grpReceived.Enabled = true;
             this.grpSend.Enabled = true;
 
             RefreshSocketState();
@@ -738,9 +714,6 @@ namespace SocketClient
             }
 
             this.AddSend(this.GetLocalString(), this.GetRemoteString(), buffer);
-
-            if (this.IsClearSend)
-                this.txtSend.Clear();
         }
         #endregion //btnSend_Click
 
@@ -813,18 +786,6 @@ namespace SocketClient
         #endregion //
 
 
-        //#region GetSelectedCRCer
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <returns></returns>
-        //private ICRCer GetSelectedCRCer()
-        //{
-        //    //return this.cmbCRC.SelectedItem as ICRCer;
-        //    return null;
-        //}
-        //#endregion //GetSelectedCRCer
-
         #region btnClearReceived_Click
         /// <summary>
         /// 
@@ -882,33 +843,6 @@ namespace SocketClient
         }
         #endregion //ReplyCollection
 
-        #region btnCopy_Click
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCopy_Click(object sender, EventArgs e)
-        {
-            //Clipboard.SetText(this.txtLog.Text);
-        }
-        #endregion //btnCopy_Click
-
-
-        #region IsClearSend
-        /// <summary>
-        /// 
-        /// </summary>
-        private bool IsClearSend
-        {
-            get
-            {
-                //return chkClearAfterSend.Checked; 
-                return false;
-            }
-        }
-        #endregion //IsClearSend
-
         #region AddReceived
         /// <summary>
         /// 
@@ -937,7 +871,10 @@ namespace SocketClient
 
 
         #region AddLog
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
         private void AddLog(LogItem item)
         {
             string datas = string.Empty;
@@ -977,7 +914,6 @@ namespace SocketClient
             {
                 DataGridViewCellStyle style = new DataGridViewCellStyle(this.dataGridView1.DefaultCellStyle);
                 style.BackColor = dd.BackColor;
-                //style.BackColor = Color.Red;
                 _cellStyleHashTable[dd] = style;
                 return style;
             }
@@ -1075,8 +1011,6 @@ namespace SocketClient
                         GetLocalString(),
                         bs);
 
-                    // process autosend
-                    //
                     if (this.ReplyCollection.Enabled)
                     {
                         byte[] bsr = this.ReplyCollection.GetSendBytes(bs);
@@ -1131,30 +1065,11 @@ namespace SocketClient
         }
         #endregion //OnSyncSocketReceived
 
-        //#region OnSyncSerialPortReceived
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="bs"></param>
-        //public void OnSyncSerialPortReceived(byte[] bs)
-        //{
-        //    this.Post(ID_RECEIVEDBYTES, bs);
-        //}
-        //#endregion //OnSyncSerialPortReceived
-
         #region tsbSerialPort_Click
         private void tsbSerialPort_Click(object sender, EventArgs e)
         {
         }
         #endregion //tsbSerialPort_Click
-
-        #region frmMain_Load
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            this.dataGridView1.AutoGenerateColumns = false;
-            //this.dataGridView1.DataSource = this.LogManager.Items;
-        }
-        #endregion //frmMain_Load
 
         #region rbSendAsc_Click
         /// <summary>

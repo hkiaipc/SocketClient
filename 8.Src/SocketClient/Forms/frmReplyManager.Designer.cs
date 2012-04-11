@@ -124,7 +124,6 @@
             this.Name = "frmReplyManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "回复设置";
-            this.Load += new System.EventHandler(this.frmAutoSenderCollection_Load);
             this.ResumeLayout(false);
 
         }
