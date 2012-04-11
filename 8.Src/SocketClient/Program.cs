@@ -15,7 +15,8 @@ namespace SocketClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
+            System.AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             Application.Run(App.Default.MainForm);
             App.Default.Save();
         }
@@ -27,7 +28,13 @@ namespace SocketClient
         /// <param name="e"></param>
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            NUnit.UiKit.UserMessage.Display(e.ExceptionObject.ToString());
+            ProcessException(e.ExceptionObject as Exception);
+        }
+
+        static private void ProcessException(Exception ex)
+        {
+            NUnit.UiKit.UserMessage.DisplayFailure(ex.ToString());
+            Environment.Exit(1);
         }
 
         /// <summary>
@@ -37,7 +44,7 @@ namespace SocketClient
         /// <param name="e"></param>
         static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            NUnit.UiKit.UserMessage.Display(e.Exception.ToString());
+            ProcessException(e.Exception );
         }
     }
 }

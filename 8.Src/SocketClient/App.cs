@@ -137,7 +137,7 @@ namespace SocketClient
                     }
                     catch (Exception ex)
                     {
-                        NUnit.UiKit.UserMessage.DisplayFailure(ex.ToString());
+                        NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
                         _config = new Config();
                     }
                 }
