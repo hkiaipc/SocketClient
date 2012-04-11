@@ -102,8 +102,6 @@ namespace SocketClient
         /// <param name="e"></param>
         private void frmSerialPort_Load(object sender, EventArgs e)
         {
-            // this.txtSerialPortName.Text = App.Default.SerialPortManager.PortName;
-            // this.txtSetting.Text = App.Default.SerialPortManager.Setting;
         }
         #endregion //frmSerialPort_Load
 
