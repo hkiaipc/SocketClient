@@ -72,6 +72,10 @@ namespace SocketClient
             }
         } private int _maxCount = 10;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sendItem"></param>
         public new void Add(SendItem sendItem)
         {
             base.Add(sendItem);
