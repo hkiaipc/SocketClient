@@ -435,7 +435,7 @@
             // mnuSaveLog
             // 
             this.mnuSaveLog.Name = "mnuSaveLog";
-            this.mnuSaveLog.Size = new System.Drawing.Size(152, 22);
+            this.mnuSaveLog.Size = new System.Drawing.Size(130, 22);
             this.mnuSaveLog.Text = "保存(&S)...";
             this.mnuSaveLog.Click += new System.EventHandler(this.mnuSaveLog_Click);
             // 
@@ -466,33 +466,33 @@
             // mnuOpenSerialPort
             // 
             this.mnuOpenSerialPort.Name = "mnuOpenSerialPort";
-            this.mnuOpenSerialPort.Size = new System.Drawing.Size(152, 22);
+            this.mnuOpenSerialPort.Size = new System.Drawing.Size(130, 22);
             this.mnuOpenSerialPort.Text = "打开(&O)";
             this.mnuOpenSerialPort.Click += new System.EventHandler(this.mnuOpenSerialPort_Click);
             // 
             // mnuCloseSerialPort
             // 
             this.mnuCloseSerialPort.Name = "mnuCloseSerialPort";
-            this.mnuCloseSerialPort.Size = new System.Drawing.Size(152, 22);
+            this.mnuCloseSerialPort.Size = new System.Drawing.Size(130, 22);
             this.mnuCloseSerialPort.Text = "关闭(&C)";
             this.mnuCloseSerialPort.Click += new System.EventHandler(this.mnuCloseSerialPort_Click);
             // 
             // mnuEnableTransmit
             // 
             this.mnuEnableTransmit.Name = "mnuEnableTransmit";
-            this.mnuEnableTransmit.Size = new System.Drawing.Size(152, 22);
+            this.mnuEnableTransmit.Size = new System.Drawing.Size(130, 22);
             this.mnuEnableTransmit.Text = "转发(&E)";
             this.mnuEnableTransmit.Click += new System.EventHandler(this.mnuEnableTransmit_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(127, 6);
             // 
             // mnuSerialPortSetting
             // 
             this.mnuSerialPortSetting.Name = "mnuSerialPortSetting";
-            this.mnuSerialPortSetting.Size = new System.Drawing.Size(152, 22);
+            this.mnuSerialPortSetting.Size = new System.Drawing.Size(130, 22);
             this.mnuSerialPortSetting.Text = "设置(&S)...";
             this.mnuSerialPortSetting.Click += new System.EventHandler(this.mnuSerialPortSetting_Click);
             // 
@@ -554,7 +554,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "SocketClient ";
+            this.Text = "Socket Debugger";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.grpConnectTo.ResumeLayout(false);
