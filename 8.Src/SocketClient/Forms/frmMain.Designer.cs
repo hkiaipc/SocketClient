@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.grpConnectTo = new System.Windows.Forms.GroupBox();
             this.cmbPort = new System.Windows.Forms.ComboBox();
@@ -185,9 +185,9 @@
             // 
             // colDT
             // 
-            dataGridViewCellStyle2.Format = "yyyy-MM-dd hh:mm:ss.fff";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colDT.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "yyyy-MM-dd hh:mm:ss.fff";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colDT.DefaultCellStyle = dataGridViewCellStyle1;
             this.colDT.HeaderText = "时间";
             this.colDT.Name = "colDT";
             this.colDT.ReadOnly = true;
@@ -337,7 +337,7 @@
             this.txtSend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSend.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSend.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtSend.Location = new System.Drawing.Point(6, 20);
             this.txtSend.Multiline = true;
             this.txtSend.Name = "txtSend";
