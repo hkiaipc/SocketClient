@@ -159,11 +159,17 @@
   <data name="Enabled" xml:space="preserve">
     <value>启用</value>
   </data>
+  <data name="From" xml:space="preserve">
+    <value>从</value>
+  </data>
   <data name="InvalidIPAddress" xml:space="preserve">
     <value>无效的IP地址</value>
   </data>
   <data name="InvalidPort" xml:space="preserve">
     <value>无效的端口</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>长度</value>
   </data>
   <data name="NotConnectdState" xml:space="preserve">
     <value>未连接</value>
@@ -197,6 +203,12 @@
   </data>
   <data name="SendDataSave" xml:space="preserve">
     <value>保存(&amp;S)...</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>到</value>
   </data>
   <data name="Transmit" xml:space="preserve">
     <value>转发</value>

@@ -187,6 +187,15 @@ namespace SocketClient {
         }
         
         /// <summary>
+        ///   查找类似 从 的本地化字符串。
+        /// </summary>
+        internal static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 无效的IP地址 的本地化字符串。
         /// </summary>
         internal static string InvalidIPAddress {
@@ -201,6 +210,15 @@ namespace SocketClient {
         internal static string InvalidPort {
             get {
                 return ResourceManager.GetString("InvalidPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 长度 的本地化字符串。
+        /// </summary>
+        internal static string Length {
+            get {
+                return ResourceManager.GetString("Length", resourceCulture);
             }
         }
         
@@ -300,6 +318,24 @@ namespace SocketClient {
         internal static string SendDataSave {
             get {
                 return ResourceManager.GetString("SendDataSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 时间 的本地化字符串。
+        /// </summary>
+        internal static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 到 的本地化字符串。
+        /// </summary>
+        internal static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         

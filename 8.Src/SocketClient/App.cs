@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Net.Sockets;
+using System.Windows.Forms;
 
 namespace SocketClient
 {
@@ -152,7 +153,7 @@ namespace SocketClient
         public void Save()
         {
             FileStream stream = null;
-            string filename = "Config//Config.xml";
+            string filename = Application.StartupPath + "\\Config\\Config.xml";
             Config cfg = this.Config;
             try
             {

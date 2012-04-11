@@ -1395,5 +1395,30 @@ namespace SocketClient
                 KeyPressHelper.Process(sender, e);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuSaveLog_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                string path = sfd.FileName;
+                LogSaver saver = new LogSaver( this.LogManager );
+                try
+                {
+                    saver.Save(path);
+                }
+                catch (Exception ex)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
+                }
+            }
+        }
     }
 }

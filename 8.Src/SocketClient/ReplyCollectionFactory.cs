@@ -10,7 +10,17 @@ namespace SocketClient
     public class ReplyCollectionFactory
     {
 
-        const string FILE = "Config\\Reply.xml";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private string FileName
+        {
+            get
+            {
+                return System.Windows.Forms.Application.StartupPath + "\\Config\\Reply.xml";
+            }
+        }
 
         /// <summary>
         /// 
@@ -18,7 +28,7 @@ namespace SocketClient
         /// <param name="asc"></param>
         public void Save(ReplyCollection replyCollection)
         {
-            Save(FILE, replyCollection);
+            Save(FileName, replyCollection);
         }
 
         public void Save(string file, ReplyCollection asc)
@@ -94,7 +104,7 @@ namespace SocketClient
         /// <returns></returns>
         public ReplyCollection Create()
         {
-            return Build(FILE);
+            return Build(FileName);
         }
 
     }

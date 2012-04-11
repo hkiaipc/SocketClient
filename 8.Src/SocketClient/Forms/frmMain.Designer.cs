@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.grpConnectTo = new System.Windows.Forms.GroupBox();
             this.cmbPort = new System.Windows.Forms.ComboBox();
@@ -185,9 +185,9 @@
             // 
             // colDT
             // 
-            dataGridViewCellStyle1.Format = "yyyy-MM-dd hh:mm:ss.fff";
-            dataGridViewCellStyle1.NullValue = null;
-            this.colDT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "yyyy-MM-dd hh:mm:ss.fff";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colDT.DefaultCellStyle = dataGridViewCellStyle2;
             this.colDT.HeaderText = "时间";
             this.colDT.Name = "colDT";
             this.colDT.ReadOnly = true;
@@ -435,8 +435,9 @@
             // mnuSaveLog
             // 
             this.mnuSaveLog.Name = "mnuSaveLog";
-            this.mnuSaveLog.Size = new System.Drawing.Size(130, 22);
+            this.mnuSaveLog.Size = new System.Drawing.Size(152, 22);
             this.mnuSaveLog.Text = "保存(&S)...";
+            this.mnuSaveLog.Click += new System.EventHandler(this.mnuSaveLog_Click);
             // 
             // toolStripSeparator3
             // 
