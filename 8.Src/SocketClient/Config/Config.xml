@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IPAddressList />
+  <PortList />
+  <LastIPAddress />
+  <LastPort>0</LastPort>
+  <LogDataMode>Ascii</LogDataMode>
+  <SendDataMode>Ascii</SendDataMode>
+  <ListViewColumnWidths>
+    <int>30</int>
+    <int>30</int>
+    <int>30</int>
+    <int>30</int>
+    <int>30</int>
+  </ListViewColumnWidths>
+  <FormWindowState>Normal</FormWindowState>
+  <FormSize>
+    <Width>400</Width>
+    <Height>600</Height>
+  </FormSize>
+  <Location>
+    <X>0</X>
+    <Y>0</Y>
+  </Location>
+  <SendCollection />
+  <SerialPortSettings>
+    <PortName>Com1</PortName>
+    <BaudRate>9600</BaudRate>
+    <Parity>None</Parity>
+    <DataBits>8</DataBits>
+    <StopBits>One</StopBits>
+  </SerialPortSettings>
+</Config>
