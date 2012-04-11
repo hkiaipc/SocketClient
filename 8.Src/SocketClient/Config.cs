@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms ;
 using System.Xml.Serialization;
 using Xdgk.Common;
 using System.Net;
@@ -168,6 +169,17 @@ namespace SocketClient
         } private int[] _listViewColumnWidths;
         #endregion //ListViewColumnWidths
 
+        #region FormWindowState
+        /// <summary>
+        /// 
+        /// </summary>
+        public FormWindowState FormWindowState
+        {
+            get { return _formWindowState; }
+            set { _formWindowState = value; }
+        } private FormWindowState _formWindowState;
+        #endregion //FormWindowState
+
         #region FormSize
         /// <summary>
         /// 
@@ -210,12 +222,6 @@ namespace SocketClient
         } private Point _location;
         #endregion //Location
 
-        //public byte[] bytes 
-        //{
-        //    get { return _bytes; }
-        //    set { _bytes = value; }
-        //} private byte[] _bytes;
-
         #region SendCollection
         /// <summary>
         /// 
@@ -256,6 +262,7 @@ namespace SocketClient
             }
         } private SerialPortSettings _serialPortSettings;
         #endregion //SerialPortSettings
+
 
 
 

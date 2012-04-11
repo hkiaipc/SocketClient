@@ -210,6 +210,7 @@ namespace SocketClient
             }
 
 
+            this.WindowState = Config.FormWindowState;
             this.Size = Config.FormSize;
             this.Location = Config.Location;
 
@@ -1254,10 +1255,14 @@ namespace SocketClient
             }
             this.Config.ListViewColumnWidths = columnWidths;
 
-            // 
-            //
-            Config.FormSize = this.Size;
-            Config.Location = this.Location;
+            Config.FormWindowState = this.WindowState;
+
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Config.FormSize = this.Size;
+                Config.Location = this.Location;
+            }
+
         }
         #endregion //frmMain_FormClosed
 
@@ -1377,5 +1382,6 @@ namespace SocketClient
             }
         }
         #endregion //mnuSaveLog_Click
+
     }
 }
