@@ -6,7 +6,6 @@ namespace SocketClient
 {
     public class Transmitter
     {
-        //ppp
         /// <summary>
         /// 
         /// </summary>

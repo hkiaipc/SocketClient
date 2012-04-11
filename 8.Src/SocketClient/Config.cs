@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms ;
 using System.Xml.Serialization;
-using Xdgk.Common;
 using System.Net;
 
 namespace SocketClient

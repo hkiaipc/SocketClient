@@ -39,12 +39,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xdgk.Common, Version=0.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\Xdgk.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SelfSerializer.cs" />
     <Compile Include="Forms\frmSendDataManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +156,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\t.ico" />

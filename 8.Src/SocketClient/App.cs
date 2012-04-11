@@ -131,7 +131,7 @@ namespace SocketClient
                 {
                     try
                     {
-                        _config = (Config)Xdgk.Common.SelfSerializer.Load(
+                        _config = (Config)SelfSerializer.Load(
                             typeof(Config),
                             "Config\\Config.xml");
                     }
