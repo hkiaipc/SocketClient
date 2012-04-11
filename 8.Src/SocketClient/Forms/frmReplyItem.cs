@@ -13,6 +13,11 @@ namespace SocketClient
         public frmReplyItem()
         {
             InitializeComponent();
+
+            string s = string.Format(
+                "{0} - {1}",
+                this.Text,
+                Strings.Add);
         }
 
         public frmReplyItem(ReplyItem replyItem)
@@ -31,6 +36,11 @@ namespace SocketClient
             this.txtReceived.Text = this.ReplyItem.ReceivedPattern;
             this.txtReply.Text = HexStringConverter.Default.ConvertToObject(this.ReplyItem.ReplyBytes).ToString();
             this.txtDescription.Text = this.ReplyItem.Description;
+
+            string s = string.Format(
+                "{0} - {1}",
+                this.Text,
+                Strings.Edit);
         }
 
 

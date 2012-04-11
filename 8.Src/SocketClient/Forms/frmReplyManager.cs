@@ -11,11 +11,11 @@ namespace SocketClient
 {
     public partial class frmReplyManager : Form
     {
-        public frmReplyManager(ReplyCollection asc)
+        public frmReplyManager(ReplyCollection replys)
         {
             InitializeComponent();
-            this._asc = asc;
-            RefreshListview(_asc);
+            this._replyCollection = replys;
+            RefreshListview(_replyCollection);
             this.lvReply.ItemChecked += new ItemCheckedEventHandler(listView1_ItemChecked);
         }
 
@@ -26,7 +26,7 @@ namespace SocketClient
             asi.Enabled = lvi.Checked;
         }
 
-        private ReplyCollection _asc;
+        private ReplyCollection _replyCollection;
         private void frmAutoSenderCollection_Load(object sender, EventArgs e)
         {
         }
@@ -86,6 +86,10 @@ namespace SocketClient
                     lvi.SubItems[3].Text = ri.Description;
                 }
             }
+            else
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.SelectListViewItemFirst);
+            }
         }
 
         /// <summary>
@@ -99,7 +103,7 @@ namespace SocketClient
             if (f.ShowDialog() == DialogResult.OK)
             {
                 ReplyItem ri = f.ReplyItem;
-                this._asc.Add(ri);
+                this._replyCollection.Add(ri);
                 this.AddReplyItemToListView(ri);
                 this.lvReply.SelectedIndices.Add(this.lvReply.Items.Count - 1);
             }
@@ -111,19 +115,15 @@ namespace SocketClient
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lvReply_ItemChecked(object sender, ItemCheckedEventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            ListViewItem lvi = e.Item;
-            ReplyItem item = lvi.Tag as ReplyItem;
-            item.Enabled = lvi.Checked;
+            DeleteListViewItem();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void DeleteListViewItem()
         {
             if (this.lvReply.SelectedItems.Count > 0)
             {
@@ -131,19 +131,33 @@ namespace SocketClient
                 int index = lvi.Index;
                 ReplyItem item = (ReplyItem)lvi.Tag;
 
-                this._asc.Remove(item);
-                lvi.Remove();
-
-                if (this.lvReply.Items.Count > 0)
+                string msg = Strings.AreYouSureDelete;
+                if (NUnit.UiKit.UserMessage.Ask(msg) == DialogResult.Yes)
                 {
-                    if (index >= this.lvReply.Items.Count)
+
+                    this._replyCollection.Remove(item);
+                    lvi.Remove();
+
+                    if (this.lvReply.Items.Count > 0)
                     {
-                        index = this.lvReply.Items.Count - 1;
+                        if (index >= this.lvReply.Items.Count)
+                        {
+                            index = this.lvReply.Items.Count - 1;
+                        }
+                        this.lvReply.SelectedIndices.Clear();
+                        this.lvReply.SelectedIndices.Add(index);
                     }
-                    this.lvReply.SelectedIndices.Clear();
-                    this.lvReply.SelectedIndices.Add(index);
                 }
             }
+            else
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.SelectListViewItemFirst);
+            }
+        }
+
+        private void lvReply_KeyUp(object sender, KeyEventArgs e)
+        {
+            DeleteListViewItem();
         }
     }
 }

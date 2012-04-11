@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.lvReply = new System.Windows.Forms.ListView();
             this.chName = new System.Windows.Forms.ColumnHeader();
+            this.chReceived = new System.Windows.Forms.ColumnHeader();
+            this.chReply = new System.Windows.Forms.ColumnHeader();
             this.chDescription = new System.Windows.Forms.ColumnHeader();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.chReceived = new System.Windows.Forms.ColumnHeader();
-            this.chReply = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // lvReply
@@ -57,12 +57,22 @@
             this.lvReply.TabIndex = 0;
             this.lvReply.UseCompatibleStateImageBehavior = false;
             this.lvReply.View = System.Windows.Forms.View.Details;
-            this.lvReply.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lvReply_ItemChecked);
+            this.lvReply.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lvReply_KeyUp);
             // 
             // chName
             // 
             this.chName.Text = "名称";
             this.chName.Width = 90;
+            // 
+            // chReceived
+            // 
+            this.chReceived.Text = "接收(Hex)";
+            this.chReceived.Width = 113;
+            // 
+            // chReply
+            // 
+            this.chReply.Text = "回复(Hex)";
+            this.chReply.Width = 289;
             // 
             // chDescription
             // 
@@ -98,16 +108,6 @@
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // chReceived
-            // 
-            this.chReceived.Text = "接收(Hex)";
-            this.chReceived.Width = 113;
-            // 
-            // chReply
-            // 
-            this.chReply.Text = "回复(Hex)";
-            this.chReply.Width = 289;
             // 
             // frmReplyManager
             // 
