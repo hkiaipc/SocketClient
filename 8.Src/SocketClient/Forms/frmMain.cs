@@ -631,7 +631,14 @@ namespace SocketClient
 
             try
             {
-                this.SocketClient.Connect(this.IPAddress, this.Port);
+                if (Config.IsUseLocalPort)
+                {
+                    this.SocketClient.Connect(this.IPAddress, this.Port, Config.LocalPort);
+                }
+                else
+                {
+                    this.SocketClient.Connect(this.IPAddress, this.Port);
+                }
             }
             catch (SocketException socketEx)
             {
@@ -712,6 +719,7 @@ namespace SocketClient
             catch (SocketException socketEx)
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(socketEx.Message);
+                return;
             }
 
             this.AddSend(this.GetLocalString(), this.GetRemoteString(), buffer);

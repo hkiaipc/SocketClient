@@ -4,7 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.IO; 
+using System.IO;
 namespace SocketClient
 {
     /// <summary>
@@ -18,6 +18,15 @@ namespace SocketClient
         /// </summary>
         const int SIZE = 1024;
 
+        public void Connect(IPAddress ipAddress, UInt16 port)
+        {
+            Connect(ipAddress, port, false, 0);
+        }
+
+        public void Connect(IPAddress ipAddress, UInt16 port, UInt16 localPort)
+        {
+            Connect(ipAddress, port, true, localPort);
+        }
 
         #region Connect
         /// <summary>
@@ -25,57 +34,43 @@ namespace SocketClient
         /// </summary>
         /// <param name="ip"></param>
         /// <param name="port"></param>
-        public void Connect(IPAddress ipAddress, UInt16 port)
+        public void Connect(IPAddress ipAddress, UInt16 port, bool isUseLocalPort, UInt16 localPort)
         {
             if (this.IsConnected)
             {
                 throw new InvalidOperationException("isconnected");
             }
 
-            //if (_isClosed)
-            //{
+            try
+            {
                 _socket = new Socket(AddressFamily.InterNetwork,
                         SocketType.Stream,
                         ProtocolType.Tcp);
-            //}
-            EndPoint ep = new IPEndPoint(ipAddress, port);
-            Socket.Connect(ep);
+
+
+                if (isUseLocalPort)
+                {
+                    EndPoint localEP = new IPEndPoint(IPAddress.Any, localPort);
+                    _socket.Bind(localEP);
+                }
+
+                EndPoint ep = new IPEndPoint(ipAddress, port);
+                Socket.Connect(ep);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                if (!_socket.Connected)
+                {
+                    _socket = null;
+                }
+            }
         }
         #endregion //Connect
-
-        //#region InitSocket
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //private void InitSocket()
-        //{
-        
-        //}
-        //#endregion //InitSocket
-
-        //#region Close
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //public void Close()
-        //{
-        //    //if (_socketRS != null)
-        //    //{
-        //    //    _socketRS.Close();
-        //    //    _socketRS = null;
-        //    //}
-        //}
-        //#endregion //Close
-
-        //#region SocketRS
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //public ISocketRS SocketRS
-        //{
-        //    get { return _socketRS; }
-        //} private ISocketRS _socketRS;
-        //#endregion //SocketRS
 
         #region Socket
         /// <summary>
@@ -83,7 +78,7 @@ namespace SocketClient
         /// </summary>
         private Socket Socket
         {
-            get 
+            get
             {
                 if (_socket == null)
                 {
@@ -91,7 +86,7 @@ namespace SocketClient
                             SocketType.Stream,
                             ProtocolType.Tcp);
                 }
-                return _socket; 
+                return _socket;
             }
         } private Socket _socket;
         #endregion //Socket
@@ -102,9 +97,6 @@ namespace SocketClient
         /// </summary>
         public void Close()
         {
-            //_socket.Shutdown(SocketShutdown.Both);
-            //_socket.Close();
-            //_socket = null;
             CloseHelper();
         }
         #endregion //Close
@@ -112,7 +104,7 @@ namespace SocketClient
         #region IsConnected
         public bool IsConnected
         {
-            get 
+            get
             {
                 if (this._socket != null)
                 {
@@ -122,7 +114,6 @@ namespace SocketClient
                 {
                     return false;
                 }
-            
             }
         }
         #endregion //IsConnected
@@ -132,7 +123,7 @@ namespace SocketClient
         /// 
         /// </summary>
         /// <param name="buffer"></param>
-        public void Send( byte[] buffer )
+        public void Send(byte[] buffer)
         {
             this._socket.Send(buffer);
         }
@@ -167,7 +158,7 @@ namespace SocketClient
         #region ReceivedBytes
         public byte[] ReceivedBytes
         {
-            get 
+            get
             {
                 byte[] bs = _receivedBytes.ToArray();
                 //_receivedBytes.Seek(0, SeekOrigin.Begin);
@@ -177,8 +168,8 @@ namespace SocketClient
         } private MemoryStream _receivedBytes = new MemoryStream();
         #endregion //ReceivedBytes
 
-       
-        #region BeginReceive 
+
+        #region BeginReceive
         /// <summary>
         /// 
         /// </summary>
@@ -187,11 +178,11 @@ namespace SocketClient
             AsyncCallback cb = new AsyncCallback(ReceiveCallback);
             byte[] receiveBuffer = new byte[SIZE];
             IAsyncResult ia = _socket.BeginReceive(
-                receiveBuffer, 
-                0, 
+                receiveBuffer,
+                0,
                 SIZE,
-                SocketFlags.None, 
-                cb, 
+                SocketFlags.None,
+                cb,
                 receiveBuffer);
         }
         #endregion //BeginReceive
@@ -244,35 +235,26 @@ namespace SocketClient
         }
         #endregion //ReceiveCallback
 
-        //public void Shutdown()
-        //{
-        //    this._socket.Shutdown(SocketShutdown.Both);
-        //}
-
-        //private bool _isClosed;
-
         #region CloseHelper
         /// <summary>
         /// 
         /// </summary>
         private void CloseHelper()
         {
-            //if( !_isClosed )
-            //if (_socket != null)
-            //if( _socket.Connected )
-            //{
             Console.WriteLine("CloseHelper");
 
-            _socket.Disconnect(false);
-            _socket.Shutdown(SocketShutdown.Both);
-            _socket.Close();
-            if (this.ClosedEvent != null)
+            //if (_socket.Connected)
             {
-                this.ClosedEvent(this, EventArgs.Empty);
+                _socket.Disconnect(false);
+                _socket.Shutdown(SocketShutdown.Both);
+                _socket.Close();
+                //_socket = null;
+
+                if (this.ClosedEvent != null)
+                {
+                    this.ClosedEvent(this, EventArgs.Empty);
+                }
             }
-            //_socket = null;
-            //_isClosed = true;
-            //}
         }
         #endregion //CloseHelper
 

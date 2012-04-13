@@ -436,19 +436,19 @@
             // mnuSaveLog
             // 
             this.mnuSaveLog.Name = "mnuSaveLog";
-            this.mnuSaveLog.Size = new System.Drawing.Size(130, 22);
+            this.mnuSaveLog.Size = new System.Drawing.Size(152, 22);
             this.mnuSaveLog.Text = "保存(&S)...";
             this.mnuSaveLog.Click += new System.EventHandler(this.mnuSaveLog_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(127, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(130, 22);
+            this.mnuExit.Size = new System.Drawing.Size(152, 22);
             this.mnuExit.Text = "退出(&X)";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -467,33 +467,33 @@
             // mnuOpenSerialPort
             // 
             this.mnuOpenSerialPort.Name = "mnuOpenSerialPort";
-            this.mnuOpenSerialPort.Size = new System.Drawing.Size(130, 22);
+            this.mnuOpenSerialPort.Size = new System.Drawing.Size(152, 22);
             this.mnuOpenSerialPort.Text = "打开(&O)";
             this.mnuOpenSerialPort.Click += new System.EventHandler(this.mnuOpenSerialPort_Click);
             // 
             // mnuCloseSerialPort
             // 
             this.mnuCloseSerialPort.Name = "mnuCloseSerialPort";
-            this.mnuCloseSerialPort.Size = new System.Drawing.Size(130, 22);
+            this.mnuCloseSerialPort.Size = new System.Drawing.Size(152, 22);
             this.mnuCloseSerialPort.Text = "关闭(&C)";
             this.mnuCloseSerialPort.Click += new System.EventHandler(this.mnuCloseSerialPort_Click);
             // 
             // mnuEnableTransmit
             // 
             this.mnuEnableTransmit.Name = "mnuEnableTransmit";
-            this.mnuEnableTransmit.Size = new System.Drawing.Size(130, 22);
+            this.mnuEnableTransmit.Size = new System.Drawing.Size(152, 22);
             this.mnuEnableTransmit.Text = "转发(&E)";
             this.mnuEnableTransmit.Click += new System.EventHandler(this.mnuEnableTransmit_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(127, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuSerialPortSetting
             // 
             this.mnuSerialPortSetting.Name = "mnuSerialPortSetting";
-            this.mnuSerialPortSetting.Size = new System.Drawing.Size(130, 22);
+            this.mnuSerialPortSetting.Size = new System.Drawing.Size(152, 22);
             this.mnuSerialPortSetting.Text = "设置(&S)...";
             this.mnuSerialPortSetting.Click += new System.EventHandler(this.mnuSerialPortSetting_Click);
             // 
@@ -510,19 +510,19 @@
             // mnuEnableReply
             // 
             this.mnuEnableReply.Name = "mnuEnableReply";
-            this.mnuEnableReply.Size = new System.Drawing.Size(136, 22);
+            this.mnuEnableReply.Size = new System.Drawing.Size(152, 22);
             this.mnuEnableReply.Text = "启用回复(&A)";
             this.mnuEnableReply.Click += new System.EventHandler(this.mnuEnableReply_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(133, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuReplySetting
             // 
             this.mnuReplySetting.Name = "mnuReplySetting";
-            this.mnuReplySetting.Size = new System.Drawing.Size(136, 22);
+            this.mnuReplySetting.Size = new System.Drawing.Size(152, 22);
             this.mnuReplySetting.Text = "设置(&S)...";
             this.mnuReplySetting.Click += new System.EventHandler(this.mnuReplySetting_Click);
             // 
@@ -537,7 +537,7 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(130, 22);
+            this.mnuAbout.Size = new System.Drawing.Size(152, 22);
             this.mnuAbout.Text = "关于(&A)...";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 

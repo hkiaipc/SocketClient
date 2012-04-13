@@ -262,8 +262,39 @@ namespace SocketClient
         } private SerialPortSettings _serialPortSettings;
         #endregion //SerialPortSettings
 
+        #region LocalPort
+        /// <summary>
+        /// 
+        /// </summary>
+        public UInt16  LocalPort
+        {
+            get
+            {
+                return _localPort;
+            }
+            set
+            {
+                _localPort = value;
+            }
+        } private UInt16 _localPort;
+        #endregion //LocalPort
 
-
+        #region IsUseLocalPort
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsUseLocalPort
+        {
+            get
+            {
+                return _isUseLocalPort;
+            }
+            set
+            {
+                _isUseLocalPort = value;
+            }
+        } private bool _isUseLocalPort;
+        #endregion //IsUseLocalPort
 
     }
 }

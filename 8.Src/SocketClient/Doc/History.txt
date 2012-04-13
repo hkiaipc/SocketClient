@@ -1,0 +1,4 @@
+﻿2012-04-13
+v1.1.0.0
+    add localport in config
+	fixed send exception bug
