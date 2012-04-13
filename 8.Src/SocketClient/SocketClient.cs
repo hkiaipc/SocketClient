@@ -18,15 +18,19 @@ namespace SocketClient
         /// </summary>
         const int SIZE = 1024;
 
+        #region Connect
         public void Connect(IPAddress ipAddress, UInt16 port)
         {
             Connect(ipAddress, port, false, 0);
         }
+        #endregion //Connect
 
+        #region Connect
         public void Connect(IPAddress ipAddress, UInt16 port, UInt16 localPort)
         {
             Connect(ipAddress, port, true, localPort);
         }
+        #endregion //Connect
 
         #region Connect
         /// <summary>
